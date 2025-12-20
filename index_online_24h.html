@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>1% ACCESS ROTATION</title>
+<style>
+body {
+    background:black;
+    color:#00ff00;
+    font-family:monospace;
+    text-align:center;
+    padding-top:120px;
+    overflow:hidden;
+}
+#txt { 
+    white-space:pre-line;
+    font-size:22px;
+}
+@keyframes blink { 50% { opacity:0.4; } }
+</style>
+</head>
+<body>
+<div id="txt">loading...</div>
+
+<script>
+// 7-message cycle
+const messages = [
+    "Only 1% understand the code within the chaos.",
+    "If you're reading this, you're already part of the 1%.",
+    "Access level upgraded.",
+    "Noise hides truth. The 1% decodes it.",
+    "Perception is the ultimate power.",
+    "The system fears those who think independently.",
+    "The silent ones shape the future."
+];
+
+// Start date (ONLINE version uses today's date)
+const startDay = new Date("2025-01-01"); // You can adjust
+
+function updateMessage() {
+    const now = new Date();
+    const diffDays = Math.floor((now - startDay) / (1000*60*60*24));
+    const index = diffDays % messages.length;
+    document.getElementById("txt").innerText =
+        "decrypting...
+
+" + messages[index];
+}
+
+setTimeout(updateMessage, 800);
+</script>
+
+</body>
+</html>
