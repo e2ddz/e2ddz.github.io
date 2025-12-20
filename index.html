@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>1% ELITE ACCESS</title>
+<title>1% ACCESS</title>
 
 <style>
     body {
@@ -11,53 +10,90 @@
         padding: 0;
         overflow: hidden;
         font-family: 'Courier New', monospace;
+        background: black;
         color: #00ffbf;
-        background: #000;
     }
 
-    /* FULLSCREEN DARK MONOLITH BACKGROUND */
+    /* BACKGROUND DARK TOWER */
     .bg {
         position: fixed;
         top: 0; left: 0;
-        width: 100%;
-        height: 100%;
+        width: 100%; height: 100%;
         background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1500&q=80');
         background-size: cover;
         background-position: center;
         opacity: 0.22;
-        filter: blur(3px);
+        filter: blur(4px);
+        z-index: -3;
     }
 
-    /* CENTERED TEXT */
+    /* AI EYE */
+    .eye {
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 260px;
+        filter: drop-shadow(0 0 25px #00fff2);
+        animation: pulse 4s infinite ease-in-out;
+        z-index: 3;
+    }
+
+    /* GOLD 1% SIGIL */
+    .sigil {
+        position: absolute;
+        top: 46%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 160px; height: 160px;
+        border-radius: 50%;
+        border: 6px solid #d4a93b;
+        box-shadow: 0 0 22px #d4a93b;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 48px;
+        color: #d4a93b;
+        font-weight: bold;
+    }
+
+    @keyframes pulse {
+        0% { transform: translate(-50%, -50%) scale(1); }
+        50% { transform: translate(-50%, -50%) scale(1.10); }
+        100% { transform: translate(-50%, -50%) scale(1); }
+    }
+
+    /* CENTER TEXT */
     .center {
         position: absolute;
-        top: 50%; left: 50%;
+        top: 68%;
+        left: 50%;
         transform: translate(-50%, -50%);
-        text-align: center;
         width: 90%;
+        text-align: center;
+        z-index: 5;
     }
 
-    /* GLITCH TEXT */
+    /* GLITCH EFFECT */
     .glitch {
-        font-size: 32px;
+        font-size: 30px;
         font-weight: bold;
         position: relative;
         display: inline-block;
-        animation: flicker 2s infinite;
         color: #00ffbf;
         text-shadow: 0 0 12px #00ffbf;
+        animation: flicker 2.2s infinite;
     }
 
     .glitch:before, .glitch:after {
         content: "If you’re reading this, you’re already part of the 1%";
         position: absolute;
-        left: 0;
-        top: 0;
-        opacity: 0.30;
+        left: 0; top: 0;
+        opacity: 0.3;
     }
 
     .glitch:before {
-        color: #ff0055;
+        color: #ff0044;
         transform: translate(-3px, -2px);
     }
 
@@ -68,33 +104,36 @@
 
     @keyframes flicker {
         0% { opacity: 1; }
-        7% { opacity: 0.8; }
-        12% { opacity: 1; }
-        20% { opacity: 0.65; }
-        28% { opacity: 1; }
-        90% { opacity: 0.85; }
+        7% { opacity: 0.75; }
+        15% { opacity: 1; }
+        22% { opacity: 0.55; }
+        30% { opacity: 1; }
+        92% { opacity: 0.82; }
         100% { opacity: 1; }
     }
-
-    .sub {
-        margin-top: 25px;
-        font-size: 17px;
-        opacity: 0.55;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-    }
-
 </style>
 </head>
 
 <body>
 
+<!-- BACKGROUND -->
 <div class="bg"></div>
 
+<!-- AI EYE -->
+<img src="https://i.imgur.com/3qI7N3V.png" class="eye">
+
+<!-- GOLD SIGIL -->
+<div class="sigil">1%</div>
+
+<!-- MAIN TEXT -->
 <div class="center">
     <div class="glitch">If you’re reading this, you’re already part of the 1%</div>
-    <div class="sub">ACCESS GRANTED · LEVEL ONE</div>
 </div>
+
+<!-- SECRET AUDIO SIGNAL -->
+<audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7d6e7c1946.mp3?filename=deep-dark-ambient-110593.mp3" type="audio/mpeg">
+</audio>
 
 </body>
 </html>
