@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>1% ACCESS</title>
+<title>1% ELITE ACCESS</title>
 
 <style>
     body {
@@ -27,46 +27,35 @@
         z-index: -3;
     }
 
-    /* AI EYE */
-    .eye {
-        position: absolute;
-        top: 25%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 260px;
-        filter: drop-shadow(0 0 25px #00fff2);
-        animation: pulse 4s infinite ease-in-out;
-        z-index: 3;
-    }
-
-    /* GOLD 1% SIGIL */
+    /* GOLD 1% SIGIL (pulsing like deep bass) */
     .sigil {
         position: absolute;
-        top: 46%;
+        top: 36%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 160px; height: 160px;
+        width: 170px; height: 170px;
         border-radius: 50%;
         border: 6px solid #d4a93b;
-        box-shadow: 0 0 22px #d4a93b;
+        box-shadow: 0 0 25px #d4a93b;
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 48px;
         color: #d4a93b;
         font-weight: bold;
+        animation: pulse 4s infinite ease-in-out;
     }
 
     @keyframes pulse {
-        0% { transform: translate(-50%, -50%) scale(1); }
-        50% { transform: translate(-50%, -50%) scale(1.10); }
-        100% { transform: translate(-50%, -50%) scale(1); }
+        0% { transform: translate(-50%, -50%) scale(1);}
+        50% { transform: translate(-50%, -50%) scale(1.12);}
+        100% { transform: translate(-50%, -50%) scale(1);}
     }
 
-    /* CENTER TEXT */
+    /* MAIN TEXT */
     .center {
         position: absolute;
-        top: 68%;
+        top: 62%;
         left: 50%;
         transform: translate(-50%, -50%);
         width: 90%;
@@ -74,7 +63,7 @@
         z-index: 5;
     }
 
-    /* GLITCH EFFECT */
+    /* GLITCH TEXT */
     .glitch {
         font-size: 30px;
         font-weight: bold;
@@ -118,9 +107,6 @@
 
 <!-- BACKGROUND -->
 <div class="bg"></div>
-
-<!-- AI EYE -->
-<img src="https://i.imgur.com/3qI7N3V.png" class="eye">
 
 <!-- GOLD SIGIL -->
 <div class="sigil">1%</div>
