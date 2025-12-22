@@ -1,244 +1,124 @@
 <!DOCTYPE html>
 <html lang="lt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎄 Linksmos Kalėdos!</title>
-    <link rel="stylesheet" href="christmas.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎄</text></svg>">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎄 Linksmų Švenčių!</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at top, #0f2027, #000);
+    color: #00ff9c;
+    font-family: 'Share Tech Mono', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    padding: 30px;
+    border: 1px solid #00ff9c44;
+    background: rgba(0,0,0,0.65);
+    box-shadow: 0 0 40px #00ff9c33;
+    border-radius: 12px;
+    max-width: 500px;
+}
+
+h1 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    animation: glitch 1.5s infinite;
+}
+
+p {
+    font-size: 1.05em;
+    line-height: 1.6;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    font-size: 1em;
+    background: transparent;
+    color: #00ff9c;
+    border: 1px solid #00ff9c;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #00ff9c;
+    color: #000;
+}
+
+.footer {
+    margin-top: 25px;
+    font-size: 0.8em;
+    opacity: 0.7;
+}
+
+@keyframes glitch {
+    0% { text-shadow: 2px 0 red, -2px 0 cyan; }
+    25% { text-shadow: -2px 0 red, 2px 0 cyan; }
+    50% { text-shadow: 2px 2px red, -2px -2px cyan; }
+    75% { text-shadow: -2px -2px red, 2px 2px cyan; }
+    100% { text-shadow: 2px 0 red, -2px 0 cyan; }
+}
+
+/* krentantys simboliai */
+.matrix {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+</style>
 </head>
+
 <body>
-    <!-- SNIEGAS -->
-    <div class="snowflakes"></div>
-    
-    <!-- KONTEINERIS -->
-    <div class="container">
-        <!-- HEADER -->
-        <header class="header">
-            <h1 class="title">
-                <i class="fas fa-star"></i>
-                KALĖDŲ MAGIJA
-                <i class="fas fa-star"></i>
-            </h1>
-            <p class="subtitle">Sveikame linksmiausiose interneto Kalėdose!</p>
-            
-            <div class="countdown" id="countdown">
-                <div class="countdown-item">
-                    <span class="number" id="days">00</span>
-                    <span class="label">Dienų</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="number" id="hours">00</span>
-                    <span class="label">Valandų</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="number" id="minutes">00</span>
-                    <span class="label">Minučių</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="number" id="seconds">00</span>
-                    <span class="label">Sekundžių</span>
-                </div>
-            </div>
-        </header>
 
-        <!-- PAGRINDINIS TURINYS -->
-        <main class="main-content">
-            <!-- KALĖDŲ EGLUTĖ -->
-            <div class="christmas-tree">
-                <div class="tree">
-                    <div class="lights"></div>
-                    <div class="decorations">
-                        <div class="decoration ball red" style="top: 20%; left: 30%;"></div>
-                        <div class="decoration ball blue" style="top: 35%; left: 60%;"></div>
-                        <div class="decoration ball yellow" style="top: 50%; left: 40%;"></div>
-                        <div class="decoration ball green" style="top: 65%; left: 70%;"></div>
-                        <div class="decoration ball purple" style="top: 80%; left: 50%;"></div>
-                        <div class="decoration star" style="top: 5%; left: 50%;">
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="tree-trunk"></div>
-                <div class="gifts">
-                    <div class="gift gift1"></div>
-                    <div class="gift gift2"></div>
-                    <div class="gift gift3"></div>
-                </div>
-            </div>
+<canvas class="matrix"></canvas>
 
-            <!-- KALĖDŲ LINKĖJIMAI -->
-            <div class="greetings">
-                <h2><i class="fas fa-gift"></i> Kalėdiniai Linkėjimai!</h2>
-                <div class="greeting-card">
-                    <p id="greeting-text">Sveikinu su Kalėdomis! Tegul šios šventės atneša tau daug džiaugsmo, šilumos ir laimės! 🎅</p>
-                    <button class="btn-change" id="change-greeting">
-                        <i class="fas fa-random"></i> Keisti linkėjimą
-                    </button>
-                </div>
-                
-                <div class="personal-greeting">
-                    <h3><i class="fas fa-user-edit"></i> Asmeninis linkėjimas</h3>
-                    <input type="text" id="name-input" placeholder="Įvesk savo vardą...">
-                    <button class="btn-personal" id="personalize-btn">
-                        <i class="fas fa-magic"></i> Sukurti asmeninį linkėjimą
-                    </button>
-                    <p class="result" id="personal-greeting"></p>
-                </div>
-            </div>
+<div class="container">
+    <h1>🎄 SYSTEM ONLINE</h1>
+    <p>
+        Linksmų Kalėdų ir<br>
+        galingų Naujųjų Metų! 🚀<br><br>
+        Tegul 2026 būna:
+        <br>✔️ be bug’ų
+        <br>✔️ su dideliu uptime
+        <br>✔️ ir zero exploits tavo gyvenime
+    </p>
 
-            <!-- KALĖDŲ ŽAIDIMAI -->
-            <div class="games">
-                <h2><i class="fas fa-gamepad"></i> Kalėdiniai Žaidimai</h2>
-                
-                <div class="game-cards">
-                    <!-- ŽAIDIMAS 1: Sniego gniūžtės -->
-                    <div class="game-card">
-                        <div class="game-icon">
-                            <i class="fas fa-snowflake"></i>
-                        </div>
-                        <h3>Sniego Gniūžtės</h3>
-                        <p>Paspausk ant sniego gniūžtės!</p>
-                        <div class="snowball" id="snowball">
-                            <i class="fas fa-snowflake"></i>
-                        </div>
-                        <p class="score">Taškai: <span id="snow-score">0</span></p>
-                    </div>
+    <button onclick="surprise()">🎁 Atidaryti dovaną</button>
 
-                    <!-- ŽAIDIMAS 2: Kalėdiniai Muzikos Instrumentai -->
-                    <div class="game-card">
-                        <div class="game-icon">
-                            <i class="fas fa-music"></i>
-                        </div>
-                        <h3>Kalėdiniai Garso Efektai</h3>
-                        <p>Spausk ant instrumentų!</p>
-                        <div class="instruments">
-                            <button class="instrument bell" data-sound="bell">
-                                <i class="fas fa-bell"></i>
-                            </button>
-                            <button class="instrument drum" data-sound="drum">
-                                <i class="fas fa-drum"></i>
-                            </button>
-                            <button class="instrument horn" data-sound="horn">
-                                <i class="fas fa-bullhorn"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- ŽAIDIMAS 3: Elnių Lenktynės -->
-                    <div class="game-card">
-                        <div class="game-icon">
-                            <i class="fas fa-reindeer"></i>
-                        </div>
-                        <h3>Elnių Lenktynės</h3>
-                        <p>Kuris elnias greičiausias?</p>
-                        <div class="race-track">
-                            <div class="reindeer" id="reindeer1">🦌</div>
-                            <div class="reindeer" id="reindeer2">🦌</div>
-                            <div class="reindeer" id="reindeer3">🦌</div>
-                        </div>
-                        <button class="btn-race" id="start-race">
-                            <i class="fas fa-play"></i> Pradėti lenktynes
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- KALĖDŲ DAIKTAI -->
-            <div class="decorations-section">
-                <h2><i class="fas fa-tree"></i> Puoškime Kalėdas!</h2>
-                <div class="decoration-controls">
-                    <button class="decoration-btn" id="add-snow">
-                        <i class="fas fa-snowflake"></i> Pridėti daugiau sniego
-                    </button>
-                    <button class="decoration-btn" id="toggle-lights">
-                        <i class="fas fa-lightbulb"></i> Įjungti/išjungti šviesas
-                    </button>
-                    <button class="decoration-btn" id="change-theme">
-                        <i class="fas fa-palette"></i> Keisti temą
-                    </button>
-                </div>
-                
-                <div class="color-picker">
-                    <h3>Pasirink eglutės papuošalų spalvą:</h3>
-                    <div class="colors">
-                        <div class="color-option red active" data-color="#ff4444"></div>
-                        <div class="color-option blue" data-color="#4488ff"></div>
-                        <div class="color-option green" data-color="#44ff44"></div>
-                        <div class="color-option gold" data-color="#ffcc00"></div>
-                        <div class="color-option purple" data-color="#cc44ff"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- KALĖDŲ DAINOS -->
-            <div class="music-player">
-                <h2><i class="fas fa-music"></i> Kalėdinė Daina</h2>
-                <div class="player">
-                    <div class="song-info">
-                        <h3 id="song-title">"Kalėdų Eglutė"</h3>
-                        <p id="song-artist">Tradicinė Kalėdų daina</p>
-                    </div>
-                    <div class="player-controls">
-                        <button class="player-btn" id="prev-song">
-                            <i class="fas fa-step-backward"></i>
-                        </button>
-                        <button class="player-btn" id="play-pause">
-                            <i class="fas fa-play"></i>
-                        </button>
-                        <button class="player-btn" id="next-song">
-                            <i class="fas fa-step-forward"></i>
-                        </button>
-                    </div>
-                    <div class="volume-control">
-                        <i class="fas fa-volume-down"></i>
-                        <input type="range" id="volume-slider" min="0" max="100" value="50">
-                        <i class="fas fa-volume-up"></i>
-                    </div>
-                </div>
-                <div class="lyrics">
-                    <p id="lyrics-line">"Kalėdų eglutė, kaip tu graži..."</p>
-                </div>
-            </div>
-        </main>
-
-        <!-- FOOTER -->
-        <footer class="footer">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3><i class="fas fa-code"></i> Sukurta su ♥</h3>
-                    <p>Šis puslapis sukurtas HTML, CSS ir JavaScript</p>
-                </div>
-                <div class="footer-section">
-                    <h3><i class="fas fa-share-alt"></i> Pasidalink Kalėdomis!</h3>
-                    <button class="btn-share" id="share-btn">
-                        <i class="fas fa-share"></i> Dalintis su draugais
-                    </button>
-                </div>
-                <div class="footer-section">
-                    <h3><i class="fas fa-cookie-bite"></i> Kalėdiniai Sausainiai</h3>
-                    <button class="btn-cookie" id="cookie-btn">
-                        <i class="fas fa-cookie-bite"></i> Gauti sausainį 🍪
-                    </button>
-                    <p id="cookie-count">Sausainiai: 0</p>
-                </div>
-            </div>
-            <div class="signature">
-                <p>🎄 Linksmų Kalėdų ir Laimingų Naujųjų Metų! 🎅</p>
-                <p class="copyright">© 2025 Kalėdų Magijos Dirbtuvės</p>
-            </div>
-        </footer>
+    <div class="footer">
+        © 2025 • Crafted with ☕ & code
     </div>
+</div>
 
-    <!-- AUDIO ELEMENTAI -->
-    <audio id="bell-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-christmas-bells-299.mp3" preload="auto"></audio>
-    <audio id="drum-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-toy-whistle-611.mp3" preload="auto"></audio>
-    <audio id="horn-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-funny-fart-575.mp3" preload="auto"></audio>
-    <audio id="christmas-song" src="https://assets.mixkit.co/music/preview/mixkit-christmas-is-coming-1183.mp3" preload="metadata"></audio>
+<script>
+/* MATRIX EFFECT */
+const canvas = document.querySelector('.matrix');
+const ctx = canvas.getContext('2d');
 
-    <!-- JAVASCRIPT -->
-    <script src="christmas.js"></script>
-</body>
-</html>
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const letters = '01★☆☃❄';
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+const drops = Array.from({length: columns}).fill(1);
+
+function drawMatrix() {
+    ctx.fillStyle = 'rgba(0,0,0,0.08)';
+    ctx.fillRect(0, 0, canvas
