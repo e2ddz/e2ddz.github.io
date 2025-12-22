@@ -1,125 +1,126 @@
 <!DOCTYPE html>
-<html>
+<html lang="lt">
 <head>
-<meta charset="UTF-8">
-<title>1% ELITE ACCESS</title>
-
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        font-family: 'Courier New', monospace;
-        background: black;
-        color: #00ffbf;
-    }
-
-    /* BACKGROUND DARK TOWER */
-    .bg {
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1500&q=80');
-        background-size: cover;
-        background-position: center;
-        opacity: 0.22;
-        filter: blur(4px);
-        z-index: -3;
-    }
-
-    /* GOLD 1% SIGIL (pulsing like deep bass) */
-    .sigil {
-        position: absolute;
-        top: 36%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 170px; height: 170px;
-        border-radius: 50%;
-        border: 6px solid #d4a93b;
-        box-shadow: 0 0 25px #d4a93b;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 48px;
-        color: #d4a93b;
-        font-weight: bold;
-        animation: pulse 4s infinite ease-in-out;
-    }
-
-    @keyframes pulse {
-        0% { transform: translate(-50%, -50%) scale(1);}
-        50% { transform: translate(-50%, -50%) scale(1.12);}
-        100% { transform: translate(-50%, -50%) scale(1);}
-    }
-
-    /* MAIN TEXT */
-    .center {
-        position: absolute;
-        top: 62%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 90%;
-        text-align: center;
-        z-index: 5;
-    }
-
-    /* GLITCH TEXT */
-    .glitch {
-        font-size: 30px;
-        font-weight: bold;
-        position: relative;
-        display: inline-block;
-        color: #00ffbf;
-        text-shadow: 0 0 12px #00ffbf;
-        animation: flicker 2.2s infinite;
-    }
-
-    .glitch:before, .glitch:after {
-        content: "If you’re reading this, you’re already part of the 1%";
-        position: absolute;
-        left: 0; top: 0;
-        opacity: 0.3;
-    }
-
-    .glitch:before {
-        color: #ff0044;
-        transform: translate(-3px, -2px);
-    }
-
-    .glitch:after {
-        color: #00aaff;
-        transform: translate(3px, 2px);
-    }
-
-    @keyframes flicker {
-        0% { opacity: 1; }
-        7% { opacity: 0.75; }
-        15% { opacity: 1; }
-        22% { opacity: 0.55; }
-        30% { opacity: 1; }
-        92% { opacity: 0.82; }
-        100% { opacity: 1; }
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🦠 Edukacinis Viruso Simuliatorius</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
+    <div class="container">
+        <!-- HEADER -->
+        <header class="header">
+            <h1><i class="fas fa-virus"></i> EDUKACINIS VIRUSO SIMULIATORIUS</h1>
+            <p class="subtitle">Saugus būdas suprasti kompiuterių virusų veikimą</p>
+            <div class="warning">
+                <i class="fas fa-exclamation-triangle"></i>
+                <strong>DĖMESIO:</strong> Tai yra SIMULIACIJA. Programa yra visiškai saugi ir nieko nepažeidžia.
+            </div>
+        </header>
 
-<!-- BACKGROUND -->
-<div class="bg"></div>
+        <!-- VIRUS SELECTION -->
+        <section class="virus-selection">
+            <h2><i class="fas fa-biohazard"></i> Pasirinkite simuliacijos tipą:</h2>
+            <div class="virus-cards">
+                <div class="card" data-virus="trojan">
+                    <div class="card-icon" style="color: #ff6b6b;">
+                        <i class="fas fa-horse-head"></i>
+                    </div>
+                    <h3>Trojan Arklys</h3>
+                    <p>Imituoja pasitikėjimo programas, kurios slepia kenksmingą kodą</p>
+                    <button class="btn activate-btn" data-virus="trojan">
+                        <i class="fas fa-play"></i> Aktyvuoti
+                    </button>
+                </div>
 
-<!-- GOLD SIGIL -->
-<div class="sigil">1%</div>
+                <div class="card" data-virus="ransomware">
+                    <div class="card-icon" style="color: #ffd93d;">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Išpirkos Virusas</h3>
+                    <p>Simuliuoja failų užšifravimą ir išpirkos reikalavimą</p>
+                    <button class="btn activate-btn" data-virus="ransomware">
+                        <i class="fas fa-play"></i> Aktyvuoti
+                    </button>
+                </div>
 
-<!-- MAIN TEXT -->
-<div class="center">
-    <div class="glitch">If you’re reading this, you’re already part of the 1%</div>
-</div>
+                <div class="card" data-virus="worm">
+                    <div class="card-icon" style="color: #6bcf7f;">
+                        <i class="fas fa-worm"></i>
+                    </div>
+                    <h3>Kirminas</h3>
+                    <p>Imituoja savidauginimąsi ir plitimą tinkle</p>
+                    <button class="btn activate-btn" data-virus="worm">
+                        <i class="fas fa-play"></i> Aktyvuoti
+                    </button>
+                </div>
+            </div>
+        </section>
 
-<!-- SECRET AUDIO SIGNAL -->
-<audio autoplay loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7d6e7c1946.mp3?filename=deep-dark-ambient-110593.mp3" type="audio/mpeg">
-</audio>
+        <!-- SIMULATION AREA -->
+        <section class="simulation-area">
+            <h2><i class="fas fa-flask"></i> Simuliacijos zona</h2>
+            <div class="screen">
+                <div class="screen-content" id="screenContent">
+                    <div class="normal-state">
+                        <i class="fas fa-desktop"></i>
+                        <h3>SISTEMA VEIKIA NORMALU</h3>
+                        <p>Pasirinkite viruso tipą simuliacijai pradėti</p>
+                    </div>
+                </div>
+            </div>
 
+            <div class="controls">
+                <button class="btn danger-btn" id="startSimulation">
+                    <i class="fas fa-skull-crossbones"></i> Pradėti Simuliaciją
+                </button>
+                <button class="btn success-btn" id="cureVirus">
+                    <i class="fas fa-syringe"></i> Išgydyti Sistemą
+                </button>
+                <button class="btn info-btn" id="resetAll">
+                    <i class="fas fa-redo"></i> Atstatyti Viską
+                </button>
+            </div>
+        </section>
+
+        <!-- LOGS -->
+        <section class="logs">
+            <h2><i class="fas fa-clipboard-list"></i> Simuliacijos žurnalas</h2>
+            <div class="log-container" id="logContainer">
+                <div class="log-entry info">
+                    <span class="log-time">[00:00:00]</span>
+                    <span class="log-text">Sistema inicijuota. Simuliatorius pasiruošęs.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATIONAL INFO -->
+        <section class="education">
+            <h2><i class="fas fa-graduation-cap"></i> Mokomoji informacija</h2>
+            <div class="info-box">
+                <h3><i class="fas fa-shield-alt"></i> Kaip apsisaugoti nuo tikrų virusų:</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Naudokite patikimą antivirusinę programinę įrangą</li>
+                    <li><i class="fas fa-check-circle"></i> Nedėkite įtartinų failų ar nuorodų</li>
+                    <li><i class="fas fa-check-circle"></i> Reguliariai atnaujinkite operacinę sistemą</li>
+                    <li><i class="fas fa-check-circle"></i> Darykite duomenų atsargines kopijas</li>
+                    <li><i class="fas fa-check-circle"></i> Būkite atsargūs su el. pašto prisegtukais</li>
+                </ul>
+                
+                <div class="project-info">
+                    <h4><i class="fas fa-info-circle"></i> Apie šį projektą:</h4>
+                    <p>Šis simuliatorius yra sukurtas <strong>edukaciniais tikslais</strong>. Jis demonstruoja, kaip veikia įvairūs kompiuterių virusai, bet yra visiškai saugi ir nieko nepažeidžia. Projektas sukurtas atsiskaitomajam darbui informatikos saugos tema.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>🦠 Sukurta edukaciniais tikslais | Atsiskaitomasis darbas: "Kompiuterių virusų veikimo simuliacija"</p>
+            <p class="footer-note"><i class="fas fa-exclamation-circle"></i> Šis projektas yra visiškai saugus ir legalus</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
