@@ -1,50 +1,146 @@
-// ===== KINTAMIEJI =====
-const loginScreen = document.getElementById('login-screen');
-const educationScreen = document.getElementById('education-screen');
-const nextBtn = document.getElementById('next-btn');
-const backBtn = document.getElementById('back-btn');
-const phishingForm = document.getElementById('phishing-form');
-const emailInput = document.getElementById('email');
-const passwordGroup = document.getElementById('password-group');
-const createAccountBtn = document.getElementById('create-account');
-const learnMoreBtn = document.getElementById('learn-more');
-const forgotLink = document.getElementById('forgot-link');
-const guestLink = document.getElementById('guest-link');
+// ===== PAGRINDINIAI KINTAMIEJIAI =====
+let currentScreen = 'login';
+let quizAnswers = {};
+let currentQuestion = 1;
+const totalQuestions = 5;
 
-// ===== FUNKCIJOS =====
+// DOM elementai
+const screens = {
+    login: document.getElementById('login-screen'),
+    education: document.getElementById('education-screen'),
+    email: document.getElementById('email-simulator-screen'),
+    quiz: document.getElementById('quiz-screen')
+};
 
-// Perjungti tarp prisijungimo ir mokymosi ekranų
-function switchToEducation() {
-    loginScreen.classList.remove('active');
-    educationScreen.classList.add('active');
-    
-    // Papildomas patikrinimo efektas
-    document.title = "Sveikiname! Atpažinote phishing simuliaciją";
-    
-    // Galima pridėti scroll į viršų
-    window.scrollTo(0, 0);
-}
+// ===== BENDROS FUNKCIJOS =====
 
-function switchToLogin() {
-    educationScreen.classList.remove('active');
-    loginScreen.classList.add('active');
-    document.title = "Gmail – Saugumo pratimas";
+// Perjungti ekranus
+function switchScreen(screenName) {
+    // Paslėpti visus ekranus
+    Object.values(screens).forEach(screen => {
+        if (screen) screen.classList.remove('active');
+    });
     
-    // Išvalyti formą
-    emailInput.value = '';
-    if (passwordGroup.classList.contains('hidden')) {
-        passwordGroup.classList.add('hidden');
+    // Rodyti pasirinktą ekraną
+    if (screens[screenName]) {
+        screens[screenName].classList.add('active');
+        currentScreen = screenName;
+        
+        // Atnaujinti puslapio pavadinimą
+        updatePageTitle(screenName);
+        
+        // Scrollinti į viršų
+        window.scrollTo(0, 0);
     }
 }
 
-// Imituoti "prisijungimo" proceso etapus
+// Atnaujinti puslapio pavadinimą
+function updatePageTitle(screenName) {
+    const titles = {
+        login: 'Gmail – Saugumo pratimas',
+        education: 'Phishing simuliacija – Mokymasis',
+        email: 'Phishing el. laiško analizė',
+        quiz: 'Testas "Ar atpažintum phishing?"'
+    };
+    
+    if (titles[screenName]) {
+        document.title = titles[screenName];
+    }
+}
+
+// ===== PRISIJUNGIMO EKRANAS =====
+
+// Inicializuoti prisijungimo ekraną
+function initLoginScreen() {
+    const nextBtn = document.getElementById('next-btn');
+    const createAccountBtn = document.getElementById('create-account');
+    const skipBtn = document.getElementById('skip-to-education');
+    const fakeUrlBar = document.getElementById('fakeUrlBar');
+    const forgotLink = document.getElementById('forgot-link');
+    const guestLink = document.getElementById('guest-link');
+    const emailInput = document.getElementById('email');
+    const passwordGroup = document.getElementById('password-group');
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', handleNextButton);
+    }
+    
+    if (createAccountBtn) {
+        createAccountBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchScreen('education');
+        });
+    }
+    
+    if (skipBtn) {
+        skipBtn.addEventListener('click', () => {
+            switchScreen('education');
+        });
+    }
+    
+    if (fakeUrlBar) {
+        fakeUrlBar.addEventListener('click', () => {
+            alert('🔍 ADRESO PATIKRINIMAS:\n\nJūsų adresas: "acc0unt-google.com"\nTikras adresas: "accounts.google.com"\n\nPastebėjote skirtumą? Sukčiai naudoja panašius adresus!');
+        });
+    }
+    
+    if (forgotLink) {
+        forgotLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('⚠️ Tikrame Gmail puslapyje ši nuoroda vestų į slaptažodžio atkūrimo formą. Čia ji demonstruoja, kaip phishing puslapiai imituoja realius elementus.');
+        });
+    }
+    
+    if (guestLink) {
+        guestLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('ℹ️ "Naudoti kaip svečias" dažnai yra phishing taktika, skirta greičiau gauti jūsų duomenis.');
+        });
+    }
+    
+    // Formos apdorojimas
+    if (emailInput) {
+        emailInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                handleNextButton();
+            }
+        });
+    }
+    
+    // Automatinis perėjimas po 60s neveikimo
+    let inactivityTimer;
+    function resetInactivityTimer() {
+        clearTimeout(inactivityTimer);
+        inactivityTimer = setTimeout(() => {
+            if (currentScreen === 'login') {
+                alert('⏰ Saugumo pranešimas: Realioje situacijoje, ilgai neužpildžius formos, phishing puslapis galėtų nukreipti jus į tikrą svetainę arba parodyti klaidą.\n\nDabar pereiname prie mokymosi.');
+                switchScreen('education');
+            }
+        }, 60000);
+    }
+    
+    // Sekti veiklą
+    ['click', 'mousemove', 'keypress'].forEach(event => {
+        document.addEventListener(event, resetInactivityTimer);
+    });
+    resetInactivityTimer();
+}
+
+// Kito mygtuko apdorojimas
 function handleNextButton() {
+    const emailInput = document.getElementById('email');
+    const passwordGroup = document.getElementById('password-group');
+    const nextBtn = document.getElementById('next-btn');
+    
+    if (!emailInput || !passwordGroup || !nextBtn) return;
+    
     const email = emailInput.value.trim();
     
     if (email === '') {
-        // Jei laukas tuščias, pridėti vizualinę klaidą
+        // Rodyti klaidą
         emailInput.style.borderColor = '#d93025';
-        emailInput.style.boxShadow = '0 0 0 2px rgba(217, 48, 37, 0.2)';
+        emailInput.style.boxShadow = '0 0 0 3px rgba(217, 48, 37, 0.2)';
         
         setTimeout(() => {
             emailInput.style.borderColor = '';
@@ -53,160 +149,149 @@ function handleNextButton() {
         return;
     }
     
-    // Jei slaptažodžio lauko nematome, parodyti jį
+    // Rodyti slaptažodžio lauką
     if (passwordGroup.classList.contains('hidden')) {
         passwordGroup.classList.remove('hidden');
         nextBtn.textContent = 'Prisijungti';
+        
+        // Scrollinti į slaptažodžio lauką
+        setTimeout(() => {
+            document.getElementById('password').focus();
+        }, 100);
         return;
     }
     
-    // Jei matome slaptažodžio lauką - pereiti į mokymą
-    switchToEducation();
+    // Perėjimas į mokymąsi
+    switchScreen('education');
 }
 
-// ===== ĮVYKIŲ TVARKYTOJAI =====
+// ===== EDUKACINIS EKRANAS =====
 
-// Pagrindiniai mygtukai
-nextBtn.addEventListener('click', handleNextButton);
-
-createAccountBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    // Netgi "Sukurti paskyrą" nukreipia į mokymą
-    switchToEducation();
-});
-
-backBtn.addEventListener('click', switchToLogin);
-
-// Mokymosi mygtukas
-learnMoreBtn.addEventListener('click', function() {
-    window.open('https://safeonnet.lt/patarimai/kaip-issvengti-phishing/', '_blank');
-});
-
-// Kiti interaktyvūs elementai
-forgotLink.addEventListener('click', function(e) {
-    e.preventDefault();
-    alert('⚠️ Tikrame Gmail puslapyje ši nuoroda nuvestų į slaptažodžio atkūrimo formą. Čia ji yra tik demonstracinė.');
-});
-
-guestLink.addEventListener('click', function(e) {
-    e.preventDefault();
-    alert('ℹ️ "Naudoti kaip svečias" dažnai yra phishing puslapių taktika, kad greičiau gautų jūsų duomenis.');
-});
-
-// Formos pateikimo sustabdymas
-phishingForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    handleNextButton();
-});
-
-// Interaktyvus URL - galima spustelėti
-document.getElementById('fake-url').addEventListener('click', function() {
-    const urlText = this.textContent;
-    alert(`🔍 ADRESO PATIKRINIMAS:\n\nJūs dabar esate: "${urlText}"\n\nTikras Google prisijungimo adresas turėtų būti:\n"https://accounts.google.com"\n\nPastebėjote skirtumą?`);
-});
-
-// ===== PAPILDOMAS REALISTIŠKUMAS =====
-
-// Pakeisti puslapio pavadinimą į "Gmail", kai vartotojas pradeda rašyti
-emailInput.addEventListener('focus', function() {
-    document.title = "Gmail";
-});
-
-emailInput.addEventListener('blur', function() {
-    if (document.title === "Gmail" && !educationScreen.classList.contains('active')) {
-        document.title = "Gmail – Saugumo pratimas";
+function initEducationScreen() {
+    const backBtn = document.getElementById('back-btn');
+    const toEmailBtn = document.getElementById('to-email-simulator');
+    const toQuizBtn = document.getElementById('to-quiz');
+    
+    if (backBtn) {
+        backBtn.addEventListener('click', () => {
+            switchScreen('login');
+        });
     }
-});
-
-// Automatiškai perjungti į mokymą po 90 sekundžių neveikimo
-let inactivityTimer;
-function resetInactivityTimer() {
-    clearTimeout(inactivityTimer);
-    inactivityTimer = setTimeout(() => {
-        if (loginScreen.classList.contains('active')) {
-            alert('⏰ Saugumo pranešimas: Jei šis būtų tikras phishing puslapis, jūsų duomenys jau būtų pavogti.\n\nDabar pereiname prie mokymosi.');
-            switchToEducation();
-        }
-    }, 90000); // 90 sekundžių
+    
+    if (toEmailBtn) {
+        toEmailBtn.addEventListener('click', () => {
+            switchScreen('email');
+        });
+    }
+    
+    if (toQuizBtn) {
+        toQuizBtn.addEventListener('click', () => {
+            switchScreen('quiz');
+        });
+    }
 }
 
-// Nustatyti veiklos sekimą
-['click', 'mousemove', 'keypress'].forEach(event => {
-    document.addEventListener(event, resetInactivityTimer);
-});
+// ===== EL. PAŠTO SIMULIATORIUS =====
 
-// Paleisti laikmatį
-resetInactivityTimer();
-// ===== EL. PAŠTO SIMULIATORIAUS KODAS =====
-
-// DOM elementai
-const emailScreen = document.getElementById('email-simulator-screen');
-const checkAnswersBtn = document.getElementById('check-answers');
-const emailResults = document.getElementById('email-results');
-const scoreElement = document.getElementById('score');
-const resultMessage = document.getElementById('result-message');
-const backFromEmailBtn = document.getElementById('back-from-email');
-const nextFromEmailBtn = document.getElementById('next-from-email');
-const emailPhishingButton = document.getElementById('email-phishing-button');
-const checklistItems = document.querySelectorAll('.checklist-item');
-
-// Teisingi atsakymai (pagal data-correct atributą)
-const correctAnswers = [true, true, true, false, true]; // Atitinka 5 klausimus
-
-// Funkcija perjungti į el. pašto simuliatorių
-function switchToEmailSimulator() {
-    // Paslepti visus ekranus
-    document.querySelectorAll('.screen').forEach(screen => {
-        screen.classList.remove('active');
-    });
+function initEmailSimulator() {
+    const checkAnswersBtn = document.getElementById('check-answers');
+    const backFromEmailBtn = document.getElementById('back-from-email');
+    const toQuizFromEmailBtn = document.getElementById('to-quiz-from-email');
+    const phishingButton = document.getElementById('email-phishing-button');
+    const checklistItems = document.querySelectorAll('.checklist-item');
     
-    // Rodyti el. pašto ekraną
-    emailScreen.classList.add('active');
+    // Teisingi atsakymai
+    const correctAnswers = [true, true, true, false, true];
     
-    // Atstatyti būseną
-    resetEmailSimulator();
+    if (checkAnswersBtn) {
+        checkAnswersBtn.addEventListener('click', checkEmailAnswers);
+    }
     
-    // Pakeisti puslapio pavadinimą
-    document.title = "Phishing el. laiško analizė | Saugumo mokymas";
+    if (backFromEmailBtn) {
+        backFromEmailBtn.addEventListener('click', () => {
+            switchScreen('education');
+        });
+    }
     
-    window.scrollTo(0, 0);
-}
-
-// Funkcija atstatyti el. pašto simuliatorių
-function resetEmailSimulator() {
-    // Išvalyti visus pažymėjimus
-    checklistItems.forEach(item => {
-        const checkbox = item.querySelector('input[type="checkbox"]');
-        checkbox.checked = false;
-        item.classList.remove('correct', 'incorrect');
-    });
+    if (toQuizFromEmailBtn) {
+        toQuizFromEmailBtn.addEventListener('click', () => {
+            switchScreen('quiz');
+        });
+    }
     
-    // Paslėpti rezultatus
-    emailResults.classList.add('hidden');
+    if (phishingButton) {
+        phishingButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            alert('⚠️ REALIOJE SITUACIJOJE: Spustelėję šį mygtuką būtumėte nukreipti į phishing puslapį, kur būtų pavogti jūsų prisijungimo duomenys.\n\nDėmesio: "Nemokami prizai" be jokios priežasties yra tipiškas sukčių taktika!');
+            
+            // Efektas
+            phishingButton.style.background = 'linear-gradient(135deg, #d93025, #ea4335)';
+            phishingButton.style.transform = 'scale(0.98)';
+            
+            setTimeout(() => {
+                phishingButton.style.background = '';
+                phishingButton.style.transform = '';
+            }, 500);
+        });
+    }
     
-    // Atstatyti mygtuką
-    checkAnswersBtn.innerHTML = '<i class="fas fa-check-circle"></i> Patikrinti atsakymus';
-    checkAnswersBtn.disabled = false;
-}
-
-// Funkcija patikrinti atsakymus
-function checkEmailAnswers() {
-    let score = 0;
-    const userAnswers = [];
+    // Checklist funkcionalumas
+    if (checklistItems.length > 0) {
+        checklistItems.forEach(item => {
+            const checkbox = item.querySelector('input[type="checkbox"]');
+            if (checkbox) {
+                checkbox.addEventListener('change', () => {
+                    // Pašalinti senas klasės
+                    item.classList.remove('correct', 'incorrect');
+                    
+                    // Paslėpti hint'ą
+                    const hint = item.querySelector('.hint');
+                    if (hint) hint.style.display = 'none';
+                });
+            }
+        });
+    }
     
-    // Surinkti vartotojo atsakymus
-    checklistItems.forEach((item, index) => {
-        const checkbox = item.querySelector('input[type="checkbox"]');
-        const userAnswer = checkbox.checked;
-        const isCorrect = correctAnswers[index];
-        
-        userAnswers.push({
-            userAnswer,
-            isCorrect,
-            element: item
+    // Atstatyti simuliatorių
+    function resetEmailSimulator() {
+        checklistItems.forEach(item => {
+            const checkbox = item.querySelector('input[type="checkbox"]');
+            if (checkbox) checkbox.checked = false;
+            item.classList.remove('correct', 'incorrect');
         });
         
-        // Tikrinti ar atsakymas teisingas
+        const results = document.getElementById('email-results');
+        if (results) results.classList.add('hidden');
+        
+        if (checkAnswersBtn) {
+            checkAnswersBtn.innerHTML = '<i class="fas fa-check-circle"></i> Patikrinti atsakymus';
+            checkAnswersBtn.disabled = false;
+            checkAnswersBtn.onclick = checkEmailAnswers;
+        }
+    }
+    
+    window.resetEmailSimulator = resetEmailSimulator;
+}
+
+// Tikrinti el. pašto atsakymus
+function checkEmailAnswers() {
+    const checklistItems = document.querySelectorAll('.checklist-item');
+    const results = document.getElementById('email-results');
+    const scoreElement = document.getElementById('score');
+    const resultMessage = document.getElementById('result-message');
+    const checkAnswersBtn = document.getElementById('check-answers');
+    
+    if (!checklistItems.length || !results || !scoreElement || !resultMessage || !checkAnswersBtn) return;
+    
+    let score = 0;
+    const correctAnswers = [true, true, true, false, true];
+    
+    checklistItems.forEach((item, index) => {
+        const checkbox = item.querySelector('input[type="checkbox"]');
+        const userAnswer = checkbox ? checkbox.checked : false;
+        const isCorrect = correctAnswers[index];
+        
         if (userAnswer === isCorrect) {
             score++;
             item.classList.add('correct');
@@ -220,74 +305,8 @@ function checkEmailAnswers() {
     // Rodyti rezultatus
     scoreElement.textContent = score;
     
-    // Parinkti atitinkamą žinutę
-    let message = "";
+    // Pasirinkti žinutę
+    let message = '';
     if (score === 5) {
-        message = "🎉 Puikiai! Jūs puikiai atpažįstate phishing el. laiškus. Jūsų saugumo sąmoningumas yra aukšto lygio!";
-    } else if (score >= 3) {
-        message = "✅ Gerai! Jūs atpažįstate daugumą phishing ženklų, bet dar yra ką tobulinti. Peržiūrėkite klaidas ir išmoksite daugiau.";
-    } else {
-        message = "📚 Reikia daugiau praktikos! Dauguma phishing atakų prasideda nuo el. laiškų. Atidžiai perskaitykite paaiškinimus ir bandykite dar kartą.";
-    }
-    
-    resultMessage.textContent = message;
-    emailResults.classList.remove('hidden');
-    
-    // Atnaujinti mygtuką
-    checkAnswersBtn.innerHTML = '<i class="fas fa-redo"></i> Bandyti dar kartą';
-    checkAnswersBtn.disabled = true;
-    
-    // Leisti bandyti dar kartą po 3 sekundžių
-    setTimeout(() => {
-        checkAnswersBtn.disabled = false;
-        checkAnswersBtn.onclick = function() {
-            resetEmailSimulator();
-        };
-    }, 3000);
-    
-    // Scrollinti į rezultatus
-    emailResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
-
-// Mygtuko "Gauti prizą" elgsena
-emailPhishingButton.addEventListener('click', function(e) {
-    e.preventDefault();
-    
-    // Rodyti įspėjimą
-    alert('⚠️ REALIOJE SITUACIJOJE: Spustelėję šį mygtuką būtumėte nukreipti į phishing puslapį, kur būtų pavogti jūsų prisijungimo duomenys.\n\nŠioje simuliacijoje mygtukas nieko neveikia - tai tik demonstracija.');
-    
-    // Paryškinti šį elementą kaip įtartiną
-    this.style.background = 'linear-gradient(135deg, #d93025, #ea4335)';
-    this.style.boxShadow = '0 4px 12px rgba(217, 48, 37, 0.4)';
-    
-    setTimeout(() => {
-        this.style.background = '';
-        this.style.boxShadow = '';
-    }, 2000);
-});
-
-// Įvykių tvarkytuvai
-checkAnswersBtn.addEventListener('click', checkEmailAnswers);
-
-backFromEmailBtn.addEventListener('click', function() {
-    // Grįžti į pagrindinį simuliatorių
-    switchToLogin(); // Naudojame jau esančią funkciją
-});
-
-nextFromEmailBtn.addEventListener('click', function() {
-    // Čia galite pridėti perėjimą prie kito pratimo (pvz., interaktyvaus testo)
-    alert('Ši funkcija bus įgyvendinta ateityje! Dabar grįžtame į pagrindinį simuliatorių.');
-    switchToLogin();
-});
-
-// Patikrinti ar visi reikalingi elementai egzistuoja
-if (emailScreen && checkAnswersBtn) {
-    console.log('✅ El. pašto simuliatoriaus komponentas užkrautas sėkmingai.');
-    
-    // Eksportuoti funkciją, kad galėtume ją iškviesti iš kitų dalių
-    window.switchToEmailSimulator = switchToEmailSimulator;
-}
-
-// ===== INICIJAVIMAS =====
-console.log('🔐 Edukacinis phishing simuliatorius užkrautas. Tikslas: mokyti, o ne apgauti.');
-console.log('Šiame puslapyje niekada nėra renkami jokie asmeniniai duomenys.');
+        message = '🎉 Puikiai! Jūs puikiai atpažįstate phishing el. laiškus. Jūsų saugumo sąmoningumas yra aukšto lygio!';
+    } else
