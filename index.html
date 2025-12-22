@@ -1,128 +1,521 @@
-<!-- EL. PAŠTO SIMULIATORIAUS EKRANAS -->
-<div id="email-simulator-screen" class="screen">
-    <div class="education-container">
-        <div class="education-header">
-            <h1><i class="fas fa-envelope"></i> Phishing el. laiško analizė</h1>
-            <p class="subtitle">Išmokite atpažinti apgavystę dar prieš spustelėdami</p>
-        </div>
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gmail – Saugumo pratimas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- ===== PRADINIS EKRANAS: Gmail phishing simuliacija ===== -->
+        <div id="login-screen" class="screen active">
+            <div class="header">
+                <h1 class="logo">
+                    <span class="logo-gmail">Gmáil</span>
+                </h1>
+                <p class="tagline">Prisijunkite prie netikro "Gmail" paskyros</p>
+                <div class="warning-note">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <strong>DĖMESIO:</strong> Šis puslapis yra EDUKACINIS SIMULIATORIUS
+                </div>
+            </div>
 
-        <div class="alert alert-info">
-            <i class="fas fa-info-circle"></i>
-            <strong>Užduotis:</strong> Atidžiai perskaitykite žemiau esantį el. laišką ir raskite visus įtartinus ženklus.
-        </div>
+            <div class="login-box">
+                <!-- Sukčiavimo URL -->
+                <div class="fake-url-bar" id="fakeUrlBar">
+                    <i class="fas fa-lock"></i>
+                    <span id="fake-url">https://<b>acc0unt-google</b>.com/signin</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
 
-        <!-- IMITUOJAMAS EL. LAŠKAS -->
-        <div class="email-container">
-            <div class="email-header">
-                <div class="email-sender">
-                    <div class="sender-icon">
-                        <i class="fas fa-user-circle"></i>
+                <div class="form-container">
+                    <h2>Prisijungimas</h2>
+                    <p class="subtitle">Tęskite su netikru "Google"</p>
+
+                    <form id="phishing-form">
+                        <div class="input-group">
+                            <input type="email" id="email" placeholder="El. pašto adresas arba telefono numeris" autocomplete="off">
+                            <div class="input-info">Įveskite bet ką – niekas nebus išsiųsta</div>
+                        </div>
+
+                        <div class="input-group hidden" id="password-group">
+                            <input type="password" id="password" placeholder="Slaptažodis" autocomplete="off">
+                            <div class="input-info">Šis laukas tik demonstruoja phishing formą</div>
+                        </div>
+
+                        <div class="forgot-password">
+                            <a href="#" id="forgot-link">Pamiršote el. paštą?</a>
+                            <a href="#" id="guest-link">Naudoti kaip svečias</a>
+                        </div>
+
+                        <div class="buttons">
+                            <button type="button" class="btn-secondary" id="create-account">
+                                Sukurti paskyrą
+                            </button>
+                            <button type="button" class="btn-primary" id="next-btn">
+                                Kitas
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="security-alert" id="real-alert">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Apsaugos patarimas: <strong>NEĮVESKITE</strong> tikrų duomenų nežinomiems puslapiams.</span>
                     </div>
-                    <div class="sender-info">
-                        <div class="sender-name">Gmail Support <span class="sender-address">&lt;support@gmáil-com.com&gt;</span></div>
-                        <div class="email-to">Kam: <strong>Jums</strong></div>
+
+                    <div class="statistics-box">
+                        <h3><i class="fas fa-chart-line"></i> Phishing statistika</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number">3.4 mlrd.</div>
+                                <div class="stat-label">phishing laiškų per dieną</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">$4.88 mln.</div>
+                                <div class="stat-label">vidutiniai nuostoliai</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">#1</div>
+                                <div class="stat-label">kibernetinis nusikaltimas</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="language-selector">
+                        <select>
+                            <option>Lietuvių</option>
+                            <option>English</option>
+                            <option>Русский</option>
+                        </select>
                     </div>
                 </div>
-                <div class="email-time">
-                    Šiandien, 14:30
-                    <i class="fas fa-paperclip"></i>
-                </div>
             </div>
 
-            <div class="email-subject">
-                <span class="urgency-badge"><i class="fas fa-exclamation-circle"></i> SVEIKINAME!</span> 
-                <strong>JŪSŲ PASKYRA LAIMĖJO PRIZĄ!</strong>
+            <div class="footer">
+                <div class="links">
+                    <a href="#">Pagalba</a>
+                    <a href="#">Privatumas</a>
+                    <a href="#">Sąlygos</a>
+                </div>
+                <div class="hint">
+                    <i class="fas fa-lightbulb"></i> Atkreipkite dėmesį į adreso juostą. Tai simuliacija!
+                </div>
+                <button class="btn-simple" id="skip-to-education">
+                    <i class="fas fa-forward"></i> Praleisti ir pereiti prie mokymosi
+                </button>
             </div>
+        </div>
 
-            <div class="email-body">
-                <div class="email-logo">
-                    <span style="color: #ea4335; font-weight: bold; font-size: 1.2em;">G</span>mail
+        <!-- ===== EDUKACINIS PUSLAPIS ===== -->
+        <div id="education-screen" class="screen">
+            <div class="education-container">
+                <div class="education-header">
+                    <h1><i class="fas fa-user-shield"></i> Jus būtumėte apsuktas!</h1>
+                    <p class="subtitle">Bet dabar išmoksite, kaip to išvengti</p>
                 </div>
-                
-                <p>Sveiki,</p>
-                
-                <p>Dėkojame, kad esate ištikimas Gmail vartotojas! Jūsų paskyra buvo atrinkta kaip <strong>laimėtoja mūsų metinėje akcijoje</strong>.</p>
-                
-                <p><strong>Jūsų prizas:</strong> Nemokamas 1 TB "Google One" saugyklos plėtinys <strong>1 metams</strong> (vertė: 99.99€).</p>
-                
-                <p>Kad gautumėte prizą, turime patvirtinti jūsų paskyros veikimą. Prašome <strong>per 24 valandas</strong>:</p>
-                
-                <div class="email-button-container">
-                    <a href="#" class="phishing-button" id="email-phishing-button">
-                        <i class="fas fa-gift"></i> PATVIRTINTI PASKYRĄ IR GAUTI PRIZĄ
-                    </a>
+
+                <div class="alert alert-success">
+                    <i class="fas fa-check-circle"></i>
+                    <strong>Sveikiname!</strong> Sėkmingai atpažinote phishing simuliaciją.
                 </div>
-                
-                <p>Jeigu nepatvirtinsite per nurodytą laiką, prizas bus atiduotas kitam dalyviui.</p>
-                
-                <p>Pagarbiai,<br>
-                <strong>Google Gmail Komanda</strong><br>
-                <em style="color: #5f6368; font-size: 0.9em;">Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA</em></p>
-                
-                <div class="email-footer">
-                    <p style="font-size: 0.8em; color: #5f6368;">
-                        © 2023 Google LLC. 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA.<br>
-                        <a href="#" style="color: #1a73e8;">Privatumo politika</a> | 
-                        <a href="#" style="color: #1a73e8;">Sąlygos</a>
-                    </p>
+
+                <div class="analysis-box">
+                    <h2><i class="fas fa-search"></i> "Raudonosios vėliavelės"</h2>
+                    
+                    <div class="red-flag">
+                        <div class="flag-icon flag-1">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="flag-content">
+                            <h3>1. Neteisingas URL adresas</h3>
+                            <p>Adresas <code>acc0unt-google.com</code>, o ne <code>accounts.google.com</code>.
+                            Sukčiai naudoja panašius adresus su pakeistomis raidėmis.</p>
+                            <div class="url-comparison">
+                                <div class="url-fake">
+                                    <i class="fas fa-times-circle"></i> <strong>SUKTAS:</strong> acc0unt-google.com
+                                </div>
+                                <div class="url-real">
+                                    <i class="fas fa-check-circle"></i> <strong>TIKRAS:</strong> accounts.google.com
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="red-flag">
+                        <div class="flag-icon flag-2">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <div class="flag-content">
+                            <h3>2. Klaidos tekste</h3>
+                            <p>Pavadinime "Gmáil" su kirtiniu. Taip pat puslapio nuorodos niekur nenuveda.</p>
+                        </div>
+                    </div>
+
+                    <div class="red-flag">
+                        <div class="flag-icon flag-3">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="flag-content">
+                            <h3>3. Per akivaizdus įspėjimas</h3>
+                            <p>Tikras Google puslapis neturėtų aiškiai sakyti "NEĮVESKITE duomenų". 
+                            Sukčiai kartais deda tokias užuominas, kad atrodytų patikimai.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="safety-tips">
+                    <h2><i class="fas fa-shield-alt"></i> Kaip apsisaugoti?</h2>
+                    
+                    <div class="tips-grid">
+                        <div class="tip">
+                            <div class="tip-icon">
+                                <i class="fas fa-link"></i>
+                            </div>
+                            <h4>Visada tikrinkite URL</h4>
+                            <p>Prieš įvesdami slaptažodį, patikrinkite ar adresas teisingas.</p>
+                        </div>
+                        
+                        <div class="tip">
+                            <div class="tip-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <h4>Naršykite su HTTPS</h4>
+                            <p>Tikri prisijungimo puslapiai visada turi užrakintą spynelę.</p>
+                        </div>
+                        
+                        <div class="tip">
+                            <div class="tip-icon">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <h4>Įjunkite 2 žingsnių patvirtinimą</h4>
+                            <p>Net jei pavogs slaptažodį, negalės prisijungti be telefono.</p>
+                        </div>
+                        
+                        <div class="tip">
+                            <div class="tip-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h4>Netikėkite skubių laiškų</h4>
+                            <p>Sukčiai dažnai siunčia pranešimus apie "paskyros pavojų".</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-secondary" id="back-btn">
+                        <i class="fas fa-arrow-left"></i> Grįžti prie simuliacijos
+                    </button>
+                    <button class="btn-primary" id="to-email-simulator">
+                        <i class="fas fa-envelope"></i> Išbandyti el. pašto simuliatorių
+                    </button>
+                    <button class="btn-primary" id="to-quiz">
+                        <i class="fas fa-question-circle"></i> Testas "Ar atpažintum?"
+                    </button>
+                </div>
+
+                <div class="project-note">
+                    <p><i class="fas fa-graduation-cap"></i> <strong>Edukacinis projektas</strong> – jokių duomenų nėra renkama ar siunčiama.</p>
                 </div>
             </div>
         </div>
 
-        <!-- INTERAKTYVI ANALIZĖ -->
-        <div class="analysis-task">
-            <h3><i class="fas fa-search"></i> Raskite phishing ženklus šiame laiške:</h3>
-            <p>Pažymėkite visus įtartinus elementus, kuriuos pastebėjote:</p>
-            
-            <div class="checklist">
-                <div class="checklist-item" data-correct="true">
-                    <input type="checkbox" id="check1">
-                    <label for="check1">Siuntėjo el. pašto adresas: <code>support@gmáil-com.com</code> (neteisingas)</label>
-                    <div class="hint">Teisingai! Tikras Google adresas būtų @google.com arba @gmail.com</div>
+        <!-- ===== EL. PAŠTO SIMULIATORIUS ===== -->
+        <div id="email-simulator-screen" class="screen">
+            <div class="education-container">
+                <div class="education-header">
+                    <h1><i class="fas fa-envelope"></i> Phishing el. laiško analizė</h1>
+                    <p class="subtitle">Išmokite atpažinti apgavystę prieš spustelėdami</p>
                 </div>
-                
-                <div class="checklist-item" data-correct="true">
-                    <input type="checkbox" id="check2">
-                    <label for="check2">Rašybos klaida žodyje "Gmáil" (su kirtiniu)</label>
-                    <div class="hint">Teisingai! Kompanijos savo pavadinime nedaro rašybos klaidų.</div>
+
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle"></i>
+                    <strong>Užduotis:</strong> Perskaitykite laišką ir raskite įtartinus ženklus.
                 </div>
-                
-                <div class="checklist-item" data-correct="true">
-                    <input type="checkbox" id="check3">
-                    <label for="check3">Per didelis skubumas ("per 24 valandas")</label>
-                    <div class="hint">Teisingai! Sukčiai naudoja skubą, kad priverstumėte veikti neapgalvotai.</div>
+
+                <!-- IMITUOJAMAS EL. LAŠKAS -->
+                <div class="email-container">
+                    <div class="email-header">
+                        <div class="email-sender">
+                            <div class="sender-icon">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="sender-info">
+                                <div class="sender-name">Gmail Support <span class="sender-address">&lt;support@gmáil-com.com&gt;</span></div>
+                                <div class="email-to">Kam: <strong>Jums</strong></div>
+                            </div>
+                        </div>
+                        <div class="email-time">
+                            Šiandien, 14:30
+                            <i class="fas fa-paperclip"></i>
+                        </div>
+                    </div>
+
+                    <div class="email-subject">
+                        <span class="urgency-badge"><i class="fas fa-exclamation-circle"></i> SVEIKINAME!</span> 
+                        <strong>JŪSŲ PASKYRA LAIMĖJO PRIZĄ!</strong>
+                    </div>
+
+                    <div class="email-body">
+                        <div class="email-logo">
+                            <span style="color: #ea4335; font-weight: bold; font-size: 1.2em;">G</span>mail
+                        </div>
+                        
+                        <p>Sveiki,</p>
+                        
+                        <p>Dėkojame, kad esate ištikimas Gmail vartotojas! Jūsų paskyra buvo atrinkta kaip <strong>laimėtoja mūsų metinėje akcijoje</strong>.</p>
+                        
+                        <p><strong>Jūsų prizas:</strong> Nemokamas 1 TB "Google One" saugyklos plėtinys <strong>1 metams</strong> (vertė: 99.99€).</p>
+                        
+                        <p>Kad gautumėte prizą, turime patvirtinti jūsų paskyros veikimą. Prašome <strong>per 24 valandas</strong>:</p>
+                        
+                        <div class="email-button-container">
+                            <a href="#" class="phishing-button" id="email-phishing-button">
+                                <i class="fas fa-gift"></i> PATVIRTINTI PASKYRĄ IR GAUTI PRIZĄ
+                            </a>
+                        </div>
+                        
+                        <p>Jeigu nepatvirtinsite per nurodytą laiką, prizas bus atiduotas kitam dalyviui.</p>
+                        
+                        <p>Pagarbiai,<br>
+                        <strong>Google Gmail Komanda</strong><br>
+                        <em style="color: #5f6368; font-size: 0.9em;">Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA</em></p>
+                        
+                        <div class="email-footer">
+                            <p style="font-size: 0.8em; color: #5f6368;">
+                                © 2023 Google LLC. 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA.<br>
+                                <a href="#" style="color: #1a73e8;">Privatumo politika</a> | 
+                                <a href="#" style="color: #1a73e8;">Sąlygos</a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="checklist-item" data-correct="false">
-                    <input type="checkbox" id="check4">
-                    <label for="check4">Laiške yra Google logotipas</label>
-                    <div class="hint">Ne visai! Sukčiai lengvai gali nukopijuoti logotipus – tai nepatikimumo ženklas.</div>
+
+                <!-- INTERAKTYVI ANALIZĖ -->
+                <div class="analysis-task">
+                    <h3><i class="fas fa-search"></i> Raskite phishing ženklus:</h3>
+                    <p>Pažymėkite visus įtartinus elementus:</p>
+                    
+                    <div class="checklist">
+                        <div class="checklist-item" data-correct="true">
+                            <input type="checkbox" id="check1">
+                            <label for="check1">Siuntėjo el. pašto adresas: <code>support@gmáil-com.com</code></label>
+                            <div class="hint">Teisingai! Tikras Google adresas būtų @google.com</div>
+                        </div>
+                        
+                        <div class="checklist-item" data-correct="true">
+                            <input type="checkbox" id="check2">
+                            <label for="check2">Rašybos klaida "Gmáil" (su kirtiniu)</label>
+                            <div class="hint">Teisingai! Kompanijos nedaro rašybos klaidų pavadinime.</div>
+                        </div>
+                        
+                        <div class="checklist-item" data-correct="true">
+                            <input type="checkbox" id="check3">
+                            <label for="check3">Per didelis skubumas ("per 24 valandas")</label>
+                            <div class="hint">Teisingai! Sukčiai naudoja skubą, kad priverstų veikti neapgalvotai.</div>
+                        </div>
+                        
+                        <div class="checklist-item" data-correct="false">
+                            <input type="checkbox" id="check4">
+                            <label for="check4">Laiške yra Google logotipas</label>
+                            <div class="hint">Ne visai! Sukčiai lengvai gali nukopijuoti logotipus.</div>
+                        </div>
+                        
+                        <div class="checklist-item" data-correct="true">
+                            <input type="checkbox" id="check5">
+                            <label for="check5">Pažadas "nemokamo" didelio prizo</label>
+                            <div class="hint">Teisingai! "Per dideliam prizui būti tiesa" – dažna taktika.</div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary" id="check-answers">
+                        <i class="fas fa-check-circle"></i> Patikrinti atsakymus
+                    </button>
+                    
+                    <div class="results hidden" id="email-results">
+                        <h4><i class="fas fa-chart-bar"></i> Rezultatas: <span id="score">0</span>/5 teisingai</h4>
+                        <p id="result-message"></p>
+                    </div>
                 </div>
-                
-                <div class="checklist-item" data-correct="true">
-                    <input type="checkbox" id="check5">
-                    <label for="check5">Pažadas "nemokamo" didelio prizo</label>
-                    <div class="hint">Teisingai! "Per dideliam prizui būti tiesa" – dažna sukčių taktika.</div>
+
+                <div class="action-buttons">
+                    <button class="btn-secondary" id="back-from-email">
+                        <i class="fas fa-arrow-left"></i> Grįžti į pagrindinį simuliatorių
+                    </button>
+                    <button class="btn-primary" id="to-quiz-from-email">
+                        <i class="fas fa-forward"></i> Tęsti su testu
+                    </button>
                 </div>
-            </div>
-            
-            <button class="btn-primary" id="check-answers">
-                <i class="fas fa-check-circle"></i> Patikrinti atsakymus
-            </button>
-            
-            <div class="results hidden" id="email-results">
-                <h4><i class="fas fa-chart-bar"></i> Jūsų rezultatas: <span id="score">0</span>/5 teisingai</h4>
-                <p id="result-message"></p>
             </div>
         </div>
 
-        <div class="action-buttons">
-            <button class="btn-secondary" id="back-from-email">
-                <i class="fas fa-arrow-left"></i> Grįžti į pagrindinį simuliatorių
-            </button>
-            <button class="btn-primary" id="next-from-email">
-                Tęsti su interaktyviu testu <i class="fas fa-arrow-right"></i>
-            </button>
+        <!-- ===== INTERAKTYVUS TESTAS ===== -->
+        <div id="quiz-screen" class="screen">
+            <div class="education-container">
+                <div class="education-header">
+                    <h1><i class="fas fa-question-circle"></i> Testas "Ar atpažintum phishing?"</h1>
+                    <p class="subtitle">Patikrinkite savo žinias su 5 klausimais</p>
+                </div>
+
+                <div class="quiz-container">
+                    <div class="quiz-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="quiz-progress-fill"></div>
+                        </div>
+                        <div class="progress-text">Klausimas <span id="current-question">1</span>/5</div>
+                    </div>
+
+                    <div class="quiz-question active" id="question-1">
+                        <h3>1. Gavote el. laišką iš "Gmáil Support" su nuoroda prisijungti. Ką darytumėte?</h3>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="a">
+                                <span class="option-text">Spustelėčiau nuorodą ir prisijungčiau</span>
+                            </label>
+                            <label class="quiz-option correct-answer">
+                                <input type="radio" name="q1" value="b">
+                                <span class="option-text">Įvesčiau "accounts.google.com" naršyklėje pats</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="c">
+                                <span class="option-text">Atsakyčiau į laišką ir paklausčiau, ar tai tikra</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-question" id="question-2">
+                        <h3>2. Kuris URL adresas yra įtartinas?</h3>
+                        <div class="quiz-options">
+                            <label class="quiz-option correct-answer">
+                                <input type="radio" name="q2" value="a">
+                                <span class="option-text"><code>secure-google.com/login</code></span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="b">
+                                <span class="option-text"><code>accounts.google.com</code></span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="c">
+                                <span class="option-text"><code>myaccount.google.com</code></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-question" id="question-3">
+                        <h3>3. SMS pranešime rašoma: "Jūsų banko paskyra užblokuota. Atblokuoti: [nuoroda]". Ką daryti?</h3>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="a">
+                                <span class="option-text">Spustelėčiau nuorodą ir įvesčiau duomenis</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="b">
+                                <span class="option-text">Paskambinčiau numeriu, iš kurio gavau SMS</span>
+                            </label>
+                            <label class="quiz-option correct-answer">
+                                <input type="radio" name="q3" value="c">
+                                <span class="option-text">Paskambinčiau bankui oficialiu numeriu ir paklausčiau</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-question" id="question-4">
+                        <h3>4. Kuris ženklas NĖRA tipiškas phishing požymis?</h3>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="a">
+                                <span class="option-text">Skubus pranešimas su grėsme</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="b">
+                                <span class="option-text">Prašymas atskleisti asmeninę informaciją</span>
+                            </label>
+                            <label class="quiz-option correct-answer">
+                                <input type="radio" name="q4" value="c">
+                                <span class="option-text">HTTPS ir užrakinta spynelė adreso juostoje</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-question" id="question-5">
+                        <h3>5. Facebook pranešimas iš "draugo": "Žiūrėk, ką radau apie tave! [nuoroda]"</h3>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="a">
+                                <span class="option-text">Spustelėčiau iš smalsumo</span>
+                            </label>
+                            <label class="quiz-option correct-answer">
+                                <input type="radio" name="q5" value="b">
+                                <span class="option-text">Parašyčiau draugui ir paklausčiau, ar jis išsiuntė</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="c">
+                                <span class="option-text">Atsakyčiau "Ačiū" ir spustelėčiau</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-navigation">
+                        <button class="btn-secondary" id="prev-question">
+                            <i class="fas fa-arrow-left"></i> Atgal
+                        </button>
+                        <button class="btn-primary" id="next-question">
+                            Kitas <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button class="btn-success hidden" id="finish-quiz">
+                            <i class="fas fa-flag-checkered"></i> Baigti testą
+                        </button>
+                    </div>
+                </div>
+
+                <div class="quiz-results hidden" id="quiz-results">
+                    <div class="results-header">
+                        <h2><i class="fas fa-trophy"></i> Testo rezultatai</h2>
+                        <div class="score-display">
+                            <div class="score-circle">
+                                <span id="final-score">0</span>/5
+                            </div>
+                            <div class="score-text">
+                                <h3 id="score-title">Pradedančiojo lygis</h3>
+                                <p id="score-description">Reikia daugiau praktikos!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="results-breakdown">
+                        <h3>Jūsų atsakymai:</h3>
+                        <div id="answers-list"></div>
+                    </div>
+
+                    <div class="certificate-section">
+                        <h3><i class="fas fa-certificate"></i> Saugumo pažymėjimas</h3>
+                        <p>Įveskite savo vardą, kad sugeneruotume asmeninį pažymėjimą:</p>
+                        <input type="text" id="certificate-name" placeholder="Jūsų vardas" maxlength="30">
+                        <button class="btn-primary" id="generate-certificate">
+                            <i class="fas fa-download"></i> Generuoti pažymėjimą
+                        </button>
+                        <div class="certificate-preview hidden" id="certificate-preview"></div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn-secondary" id="restart-quiz">
+                            <i class="fas fa-redo"></i> Iš naujo
+                        </button>
+                        <button class="btn-primary" id="back-to-education">
+                            <i class="fas fa-home"></i> Grįžti į pagrindinį meniu
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+
+    <!-- JavaScript failas -->
+    <script src="script.js"></script>
+</body>
+</html>
