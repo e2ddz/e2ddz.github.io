@@ -20,14 +20,26 @@ body {
     overflow: hidden;
 }
 
+.matrix {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
 .container {
+    position: relative;
+    z-index: 2;
     text-align: center;
     padding: 30px;
     border: 1px solid #00ff9c44;
     background: rgba(0,0,0,0.65);
     box-shadow: 0 0 40px #00ff9c33;
     border-radius: 12px;
-    max-width: 500px;
+    max-width: 520px;
 }
 
 h1 {
@@ -58,6 +70,33 @@ button:hover {
     color: #000;
 }
 
+.gifts {
+    display: none;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.gift {
+    border: 1px solid #00ff9c;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 6px;
+}
+
+.gift:hover {
+    background: #00ff9c;
+    color: #000;
+}
+
+.result {
+    margin-top: 20px;
+    font-size: 1.1em;
+    display: none;
+}
+
 .footer {
     margin-top: 25px;
     font-size: 0.8em;
@@ -71,16 +110,6 @@ button:hover {
     75% { text-shadow: -2px -2px red, 2px 2px cyan; }
     100% { text-shadow: 2px 0 red, -2px 0 cyan; }
 }
-
-/* krentantys simboliai */
-.matrix {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
 </style>
 </head>
 
@@ -90,19 +119,31 @@ button:hover {
 
 <div class="container">
     <h1>🎄 SYSTEM ONLINE</h1>
+
     <p>
-        Linksmų Kalėdų ir<br>
-        galingų Naujųjų Metų! 🚀<br><br>
-        Tegul 2026 būna:
-        <br>✔️ be bug’ų
-        <br>✔️ su dideliu uptime
-        <br>✔️ ir zero exploits tavo gyvenime
+        Linksmų Kalėdų ir galingų Naujųjų Metų! 🚀<br>
+        Pasirink vieną dovaną 🎁
     </p>
 
-    <button onclick="surprise()">🎁 Atidaryti dovaną</button>
+    <button onclick="showGifts()">🎁 Atidaryti dovaną</button>
+
+    <div class="gifts" id="gifts">
+        <div class="gift" onclick="openGift(1)">🎁 1</div>
+        <div class="gift" onclick="openGift(2)">🎁 2</div>
+        <div class="gift" onclick="openGift(3)">🎁 3</div>
+        <div class="gift" onclick="openGift(4)">🎁 4</div>
+        <div class="gift" onclick="openGift(5)">🎁 5</div>
+        <div class="gift" onclick="openGift(6)">🎁 6</div>
+        <div class="gift" onclick="openGift(7)">🎁 7</div>
+        <div class="gift" onclick="openGift(8)">🎁 8</div>
+        <div class="gift" onclick="openGift(9)">🎁 9</div>
+        <div class="gift" onclick="openGift(10)">🎁 10</div>
+    </div>
+
+    <div class="result" id="result"></div>
 
     <div class="footer">
-        © 2025 • Crafted with ☕ & code
+        © 2025 • Code never sleeps
     </div>
 </div>
 
@@ -121,4 +162,37 @@ const drops = Array.from({length: columns}).fill(1);
 
 function drawMatrix() {
     ctx.fillStyle = 'rgba(0,0,0,0.08)';
-    ctx.fillRect(0, 0, canvas
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#00ff9c';
+    ctx.font = fontSize + 'px monospace';
+
+    drops.forEach((y, i) => {
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, i * fontSize, y * fontSize);
+        if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+    });
+}
+setInterval(drawMatrix, 50);
+
+/* GIFTS */
+const messages = {
+  1: "🚀 Sėkmė ateina tiems, kurie spaudžia ENTER.",
+  2: "💻 Mažiau bug'ų, daugiau pergalių.",
+  3: "🔥 Drąsa keisti viską – tavo pusėje.",
+  4: "🧠 Aiški galva ir ramus protas.",
+  5: "💰 Stabilūs finansai be exploit'ų.",
+  6: "⚡ Energija kiekvienai dienai.",
+  7: "🛡️ Apsauga visose gyvenimo srityse.",
+  8: "🌍 Nauji keliai ir patirtys.",
+  9: "🏆 Dideli tikslai ir dar didesni rezultatai.",
+  10:"🎄 2026 bus tavo metai."
+};
+
+function showGifts() {
+    document.getElementById('gifts').style.display = 'grid';
+}
+
+function openGift(num) {
+    document.getElementById('result').innerText = messages[num];
+    document.getElementById('result
