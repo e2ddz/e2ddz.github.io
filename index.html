@@ -2,15 +2,20 @@
 <html lang="lt">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>🎄 Linksmų Švenčių!</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
+* {
+    box-sizing: border-box;
+}
+
 body {
+    position: relative;
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
     background: radial-gradient(circle at top, #0f2027, #000);
     color: #00ff9c;
     font-family: 'Share Tech Mono', monospace;
@@ -18,33 +23,37 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    touch-action: manipulation;
 }
 
+/* MATRIX CANVAS – MOBILE SAFE */
 .matrix {
-    position: fixed;
-    top: 0;
-    left: 0;
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none;
-    z-index: 0;
+    z-index: -1;
+    touch-action: none;
 }
 
+/* CONTENT */
 .container {
     position: relative;
-    z-index: 2;
+    z-index: 10;
     text-align: center;
-    padding: 30px;
+    padding: 28px;
+    margin: 16px;
     border: 1px solid #00ff9c44;
-    background: rgba(0,0,0,0.65);
+    background: rgba(0,0,0,0.7);
     box-shadow: 0 0 40px #00ff9c33;
-    border-radius: 12px;
+    border-radius: 14px;
     max-width: 520px;
+    width: 100%;
 }
 
 h1 {
-    font-size: 2.2em;
-    margin-bottom: 10px;
+    font-size: 2.1em;
+    margin-bottom: 12px;
     animation: glitch 1.5s infinite;
 }
 
@@ -54,22 +63,25 @@ p {
 }
 
 button {
-    margin-top: 20px;
-    padding: 12px 20px;
+    margin-top: 18px;
+    padding: 14px 22px;
     font-size: 1em;
     background: transparent;
     color: #00ff9c;
     border: 1px solid #00ff9c;
     cursor: pointer;
-    border-radius: 6px;
+    border-radius: 8px;
     transition: 0.3s;
+    touch-action: manipulation;
 }
 
+button:active,
 button:hover {
     background: #00ff9c;
     color: #000;
 }
 
+/* GIFTS GRID */
 .gifts {
     display: none;
     margin-top: 20px;
@@ -80,35 +92,46 @@ button:hover {
 
 .gift {
     border: 1px solid #00ff9c;
-    padding: 10px;
+    padding: 14px 0;
     cursor: pointer;
-    transition: 0.3s;
-    border-radius: 6px;
+    border-radius: 8px;
+    transition: 0.25s;
+    user-select: none;
+    touch-action: manipulation;
 }
 
+.gift:active,
 .gift:hover {
     background: #00ff9c;
     color: #000;
 }
 
 .result {
-    margin-top: 20px;
-    font-size: 1.1em;
+    margin-top: 22px;
+    font-size: 1.15em;
     display: none;
 }
 
 .footer {
-    margin-top: 25px;
+    margin-top: 26px;
     font-size: 0.8em;
     opacity: 0.7;
 }
 
+/* GLITCH */
 @keyframes glitch {
     0% { text-shadow: 2px 0 red, -2px 0 cyan; }
     25% { text-shadow: -2px 0 red, 2px 0 cyan; }
     50% { text-shadow: 2px 2px red, -2px -2px cyan; }
     75% { text-shadow: -2px -2px red, 2px 2px cyan; }
     100% { text-shadow: 2px 0 red, -2px 0 cyan; }
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+    .gifts {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 </style>
 </head>
@@ -122,22 +145,24 @@ button:hover {
 
     <p>
         Linksmų Kalėdų ir galingų Naujųjų Metų! 🚀<br>
-        Pasirink vieną dovaną 🎁
+        Pasirink vieną iš 10 dovanų 🎁
     </p>
 
-    <button onclick="showGifts()">🎁 Atidaryti dovaną</button>
+    <button onclick="showGifts()" ontouchstart="showGifts()">
+        🎁 Atidaryti dovaną
+    </button>
 
     <div class="gifts" id="gifts">
-        <div class="gift" onclick="openGift(1)">🎁 1</div>
-        <div class="gift" onclick="openGift(2)">🎁 2</div>
-        <div class="gift" onclick="openGift(3)">🎁 3</div>
-        <div class="gift" onclick="openGift(4)">🎁 4</div>
-        <div class="gift" onclick="openGift(5)">🎁 5</div>
-        <div class="gift" onclick="openGift(6)">🎁 6</div>
-        <div class="gift" onclick="openGift(7)">🎁 7</div>
-        <div class="gift" onclick="openGift(8)">🎁 8</div>
-        <div class="gift" onclick="openGift(9)">🎁 9</div>
-        <div class="gift" onclick="openGift(10)">🎁 10</div>
+        <div class="gift" onclick="openGift(1)" ontouchstart="openGift(1)">🎁 1</div>
+        <div class="gift" onclick="openGift(2)" ontouchstart="openGift(2)">🎁 2</div>
+        <div class="gift" onclick="openGift(3)" ontouchstart="openGift(3)">🎁 3</div>
+        <div class="gift" onclick="openGift(4)" ontouchstart="openGift(4)">🎁 4</div>
+        <div class="gift" onclick="openGift(5)" ontouchstart="openGift(5)">🎁 5</div>
+        <div class="gift" onclick="openGift(6)" ontouchstart="openGift(6)">🎁 6</div>
+        <div class="gift" onclick="openGift(7)" ontouchstart="openGift(7)">🎁 7</div>
+        <div class="gift" onclick="openGift(8)" ontouchstart="openGift(8)">🎁 8</div>
+        <div class="gift" onclick="openGift(9)" ontouchstart="openGift(9)">🎁 9</div>
+        <div class="gift" onclick="openGift(10)" ontouchstart="openGift(10)">🎁 10</div>
     </div>
 
     <div class="result" id="result"></div>
@@ -148,17 +173,21 @@ button:hover {
 </div>
 
 <script>
-/* MATRIX EFFECT */
+/* MATRIX BACKGROUND – MOBILE SAFE */
 const canvas = document.querySelector('.matrix');
 const ctx = canvas.getContext('2d');
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
 
-const letters = '01★☆☃❄';
+const chars = '01★☆☃❄';
 const fontSize = 14;
-const columns = canvas.width / fontSize;
-const drops = Array.from({length: columns}).fill(1);
+let columns = Math.floor(canvas.width / fontSize);
+let drops = Array(columns).fill(1);
 
 function drawMatrix() {
     ctx.fillStyle = 'rgba(0,0,0,0.08)';
@@ -166,36 +195,40 @@ function drawMatrix() {
     ctx.fillStyle = '#00ff9c';
     ctx.font = fontSize + 'px monospace';
 
-    drops.forEach((y, i) => {
-        const text = letters[Math.floor(Math.random() * letters.length)];
-        ctx.fillText(text, i * fontSize, y * fontSize);
-        if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+    for (let i = 0; i < drops.length; i++) {
+        const text = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+        }
         drops[i]++;
-    });
+    }
 }
-setInterval(drawMatrix, 50);
+setInterval(drawMatrix, 60);
 
 /* GIFTS */
 const messages = {
-  1: "🚀 Sėkmė ateina tiems, kurie spaudžia ENTER.",
-  2: "💻 Mažiau bug'ų, daugiau pergalių.",
-  3: "🔥 Drąsa keisti viską – tavo pusėje.",
-  4: "🧠 Aiški galva ir ramus protas.",
-  5: "💰 Stabilūs finansai be exploit'ų.",
-  6: "⚡ Energija kiekvienai dienai.",
-  7: "🛡️ Apsauga visose gyvenimo srityse.",
-  8: "🌍 Nauji keliai ir patirtys.",
-  9: "🏆 Dideli tikslai ir dar didesni rezultatai.",
-  10:"🎄 2026 bus tavo metai."
+    1: "🚀 Sėkmė ateina tiems, kurie spaudžia ENTER.",
+    2: "💻 Mažiau bug'ų, daugiau pergalių.",
+    3: "🔥 Drąsa keisti viską – tavo pusėje.",
+    4: "🧠 Aiški galva ir ramus protas.",
+    5: "💰 Stabilūs finansai be exploit'ų.",
+    6: "⚡ Energija kiekvienai dienai.",
+    7: "🛡️ Apsauga visose gyvenimo srityse.",
+    8: "🌍 Nauji keliai ir patirtys.",
+    9: "🏆 Dideli tikslai ir dar didesni rezultatai.",
+    10:"🎄 2026 bus tavo metai."
 };
 
 function showGifts() {
     document.getElementById('gifts').style.display = 'grid';
+    document.getElementById('gifts').scrollIntoView({behavior: 'smooth'});
 }
 
-function openGift(num) {
-    document.getElementById('result').innerText = messages[num];
-    document.getElementById('result').style.display = 'block';
+function openGift(n) {
+    const r = document.getElementById('result');
+    r.innerText = messages[n];
+    r.style.display = 'block';
     document.getElementById('gifts').style.display = 'none';
 }
 </script>
