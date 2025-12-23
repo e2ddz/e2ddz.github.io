@@ -1,84 +1,123 @@
 <!DOCTYPE html>
 <html lang="lt">
 <head>
-    <meta charset="UTF-8">
-    <title>Titai 😂</title>
-    <style>
-        body {
-            background: linear-gradient(135deg, #000000, #1a1a1a);
-            color: white;
-            font-family: Comic Sans MS, Arial, sans-serif;
-            text-align: center;
-            overflow-x: hidden;
-        }
+<meta charset="UTF-8">
+<title>TITAI 😈</title>
 
-        h1 {
-            font-size: 60px;
-            color: #ff0033;
-            text-shadow: 3px 3px 15px black;
-            animation: shake 0.5s infinite alternate;
-            margin-top: 30px;
-        }
+<style>
+body {
+    background: radial-gradient(circle, #000, #1a0000);
+    color: white;
+    font-family: Comic Sans MS, Impact, Arial;
+    text-align: center;
+    overflow: hidden;
+}
 
-        @keyframes shake {
-            from { transform: rotate(-1deg); }
-            to { transform: rotate(1deg); }
-        }
+h1 {
+    font-size: 70px;
+    color: red;
+    text-shadow: 0 0 25px black, 0 0 40px red;
+    animation: shake 0.1s infinite;
+    margin-top: 20px;
+}
 
-        .memes {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 30px;
-        }
+@keyframes shake {
+    0% { transform: translate(2px, -2px); }
+    25% { transform: translate(-2px, 2px); }
+    50% { transform: translate(2px, 2px); }
+    75% { transform: translate(-2px, -2px); }
+    100% { transform: translate(0, 0); }
+}
 
-        .memes img {
-            width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(255,0,0,0.6);
-            transition: transform 0.3s;
-        }
+.blink {
+    font-size: 30px;
+    animation: blink 0.5s infinite;
+}
 
-        .memes img:hover {
-            transform: scale(1.1) rotate(3deg);
-        }
+@keyframes blink {
+    50% { opacity: 0; }
+}
 
-        .footer {
-            font-size: 20px;
-            margin: 40px 0;
-            color: #00ffcc;
-        }
+.memes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
 
-        .blink {
-            animation: blink 1s infinite;
-        }
+.memes img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 0 20px red;
+    animation: spin 5s infinite linear;
+}
 
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-    </style>
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.pop {
+    position: absolute;
+    font-size: 25px;
+    color: yellow;
+    animation: pop 2s infinite;
+}
+
+@keyframes pop {
+    0% { top: 100%; left: random(100%); }
+    100% { top: -10%; }
+}
+
+button {
+    font-size: 30px;
+    padding: 15px 30px;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 0 20px black;
+}
+
+button:hover {
+    background: darkred;
+    transform: scale(1.1);
+}
+</style>
 </head>
+
 <body>
 
-    <h1>🔥 TITAI PAMIRŠK TĄ SENĄ BOBĄ 😄 🔥</h1>
+<audio autoplay loop>
+    <source src="https://www.myinstants.com/media/sounds/vine-boom.mp3" type="audio/mpeg">
+</audio>
 
-    <p class="blink" style="font-size:25px;">Gyvenimas per trumpas dramoms 🤡</p>
+<h1>🔥 TITAI PAMIRŠK TĄ SENĄ BOBĄ 🔥</h1>
 
-    <div class="memes">
-        <img src="https://i.imgflip.com/4/1bij.jpg">
-        <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
-        <img src="https://i.imgflip.com/4/30b1gx.jpg">
-        <img src="https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif">
-        <img src="https://i.imgflip.com/4/2wifvo.jpg">
-        <img src="https://media.giphy.com/media/26n6WywJyh39n1pBu/giphy.gif">
-        <img src="https://i.imgflip.com/4/1otk96.jpg">
-        <img src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif">
-    </div>
+<div class="blink">❌ GRĮŽTI PAS JĄ = NULIS PROGRESO ❌</div>
 
-    <div class="footer">
-        😎 Jei juokies – reiškia veikia <br>
-        💣 Siųsta su meile ir humoru
-    </div>
+<p style="font-size:25px;">Ji ne „pasikeis“ 🤡</p>
+<p style="font-size:22px;">Ji ne „paskutinė“ 💀</p>
+<p style="font-size:28px; color:#00ffcc;">Tu nusipelnei GERIAU 😎</p>
+
+<button onclick="alert('TEISINGAI 😈 PAMIRŠAI 💣')">
+    🧠 PAMIRŠAU
+</button>
+
+<div class="memes">
+    <img src="https://media.giphy.com/media/l3q2K5jinAlChoCLS/giphy.gif">
+    <img src="https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif">
+    <img src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif">
+    <img src="https://i.imgflip.com/4/1bij.jpg">
+    <img src="https://i.imgflip.com/4/30b1gx.jpg">
+    <img src="https://i.imgflip.com/4/2wifvo.jpg">
+    <img src="https://media.giphy.com/media/26n6WywJyh39n1pBu/giphy.gif">
+</div>
+
+<p style="font-size:22px; margin-top:30px;">
+💀 Jei vis dar galvoji apie ją — uždaryk šį puslapį ir atidaryk DAR KARTĄ 😂
+</p>
 
 </body>
 </html>
