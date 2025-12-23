@@ -24,6 +24,17 @@ body {
   flex-direction: column;
 }
 
+.page-container {
+  max-width: 448px;
+  margin: 0 auto;
+  padding: 48px 40px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+}
+
 /* Header */
 .header {
   padding: 20px 32px;
@@ -50,17 +61,6 @@ body {
   text-decoration: underline;
 }
 
-/* Main container */
-.container {
-  max-width: 448px;
-  margin: 0 auto;
-  padding: 48px 40px 36px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1;
-}
-
 /* Logo */
 .logo-container {
   margin-bottom: 16px;
@@ -69,7 +69,7 @@ body {
 .google-logo {
   width: 75px;
   height: 24px;
-  background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzUiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA3NSAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTkuOCA4LjU0VjEzLjg2SDE0LjE4QzEzLjk2IDE1LjE0IDEyLjk2IDE3LjYgOS44OCAxNy42QzYuMjggMTcuNiAzLjM0IDE0LjUyIDMuMzQgMTAuN0MzLjM0IDYuODggNi4zIDMuOCA5LjkgMy44QzEyLjA0IDMuOCAxMy40NCA0Ljc0IDE0LjIyIDUuNUwxNi42IDMuMTRDMTUuMDYgMS42OCAxMi45NiAwLjYgOS45MiAwLjZDNC40MiAwLjYgMCA1LjA0IDAgMTAuN0MwIDE2LjI4IDQuNCAyMC44IDkuOTIgMjAuOEMxNS4wNCAyMC44IDE4LjUgMTcuMTggMTguNSAxMS44QzE4LjUgMTAuNCAxOC4yMiA5LjIyIDE3Ljc0IDguMzJMMDkuOCA4LjU0WiIgZmlsbD0iIzQyODVGOCIvPgo8cGF0aCBkPSJNMjQuNDIgMTEuNkMyNC40MiA5LjYgMjUuODIgOC41NCAyNy4yNiA4LjU0QzI4Ljc0IDguNTQgMjkuODggOS41MiAyOS44OCAxMS42QzI5Ljg4IDEzLjY4IDI4LjcgMTQuNjYgMjcuMjYgMTQuNjZDMjUuODIgMTQuNjYgMjQuNDIgMTMuNiAyNC40MiAxMS42Wk0yMi40MiAxMS42QzIyLjQyIDE0LjUgMjQuNCAxNyAyNy4yNiAxN0MzMC4xMiAxNyAzMi4wMiAxNC41IDMyLjAyIDExLjZDMzIuMDIgOC43IDMwLjEyIDYuMiAyNy4yNiA2LjJDMjQuNCA2LjIgMjIuNDIgOC43IDIyLjQyIDExLjZaIiBmaWxsPSIjMzRBODUzIi8+CjxwYXRoIGQ9Ik0zNC4wNiAyLjgyVjE5Ljk4SDM3LjA4VjEyLjYySDQwLjUyTDM3LjU2IDIuODJIMzQuMDZaIiBmaWxsPSIjRkNCQjAwIi8+CjxwYXRoIGQ9Ik01My4xIDguNTRWMTMuODZINTcuNDhDNTcuMjYgMTUuMTQgNTYuMjYgMTcuNiA1My4xOCAxNy42QzQ5LjU4IDE3LjYgNDYuNjQgMTQuNTIgNDYuNjQgMTAuN0M0Ni42NCA2Ljg4IDQ5LjYgMy44IDUzLjIgMy44QzU1LjM0IDMuOCA1Ni43NCA0Ljc0IDU3LjUyIDUuNUw1OS45IDMuMTRDNTguMzYgMS42OCA1Ni4yNiAwLjYgNTMuMjIgMC42QzQ3LjcyIDAuNiA0My4zIDUuMDQgNDMuMyAxMC43QzQzLjMgMTYuMjggNDcuNyAyMC44IDUzLjIyIDIwLjhDNTguMzQgMjAuOCA2MS44IDE3LjE4IDYxLjggMTEuOEM2MS44IDEwLjQgNjEuNTIgOS4yMiA2MS4wNCA4LjMyTDUzLjEgOC41NFoiIGZpbGw9IiM0Mjg1RjgiLz4KPHBhdGggZD0iTTc1IDExLjZDNzUgOS42IDc2LjQyIDguNTQgNzcuODYgOC41NEM3OS4zNCA4LjU0IDgwLjQ4IDkuNTIgODAuNDggMTEuNkM4MC40OCAxMy42OCA3OS4zIDE0LjY2IDc3Ljg2IDE0LjY2Qzc2LjQyIDE0LjY2IDc1IDEzLjYgNzUgMTEuNlpNNzMuMDIgMTEuNkM3My4wMiAxNC41IDc1IDE3IDc3Ljg2IDE3QzgwLjcyIDE3IDgyLjYyIDE0LjUgODIuNjIgMTEuNkM4Mi42MiA4LjcgODAuNzIgNi4yIDc3Ljg2IDYuMkM3NSA2LjIgNzMuMDIgOC43IDczLjAyIDExLjZaIiBmaWxsPSIjMzRBODUzIi8+Cjwvc3ZnPgo=') no-repeat center;
+  background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzUiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA3NSAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTkuOCA4LjU0VjEzLjg2SDE0LjE4QzEzLjk2IDE1LjE0IDEyLjk2IDE3LjYgOS44OCAxNy42QzYuMjggMTcuNiAzLjM0IDE0LjUyIDMuMzQgMTAuN0MzLjM0IDYuODggNi4zIDMuOCA5LjkgMy44QzEyLjA0IDMuOCAxMy40NCA0Ljc0IDE0LjIyIDUuNUwxNi42IDMuMTRDMTUuMDYgMS42OCAxMi45NiAwLjYgOS45MiAwLjZDNC40MiAwLjYgMCA1LjA0IDAgMTAuN0MwIDE2LjI4IDQuNCAyMC44IDkuOTIgMjAuOEMxNS4wNCAyMC44IDE4LjUgMTcuMTggMTguNSAxMS44QzE4LjUgMTAuNCAxOC4yMiA5LjIyIDE3Ljc0IDguMzJMMDkuOCA4LjU0WiIgZmlsbD0iIzQyODVGOCIvPgo8cGF0aCBkPSJNMjQuNDIgMTEuNkMyNC40MiA5LjYgMjUuODIgOC41NCAyNy4yNiA4LjU0QzI4Ljc0IDguNTQgMjkuODggOS41MiAyOS44OCAxMS42QzI5Ljg4IDEzLjY4IDI4LjcgMTQuNjYgMjcuMjYgMTQuNjZDMjUuODIgMTQuNjYgMjQuNDIgMTMuNiAyNC40MiAxMS42Wk0yMi40MiAxMS42QzIyLjQyIDE0LjUgMjQuNCAxNyAyNy4yNiAxN0MzMC4xMiAxNyAzMi4wMiAxNC41IDMyLjAyIDExLjZDMzIuMDIgOC43IDMwLjEyIDYuMiAyNy4yNiA2LjJDMjQuNCA2LjIgMjIuNDIgOC43IDIyLjQyIDExLjZaIiBmaWxsPSIjMzRBODUzIi8+CjxwYXRoIGQ9Ik0zNC4wNiAyLjgyVjE5Ljk4SDM3LjA4VjEyLjYySDQwLjUyTDM3LjU2IDIuODJIMzQuMDZaIiBmaWxsPSIjRkNCQjAwIi8+CjxwYXRoIGQ9Ik01My4xIDguNTRWMTMuODZINTcuNDhDNTcuMjYgMTUuMTQgNTYuMjYgMTcuNiA1My4xOCAxNy42QzQ5LjU4IDE3LjYgNDYuNjQgMTQuNTIgNDYuNjQgMTAuN0M0Ni42NCA2Ljg4IDQ5LjYgMy44IDUzLjIgMy44QzU1LjM0IDMuOCA1Ni43NCA0Ljc0IDU3LjUyIDUuNUw1OS45IDMuMTRDNTguMzYgMS42OCA1Ni4yNiAwLjYgNTMuMjIgMC42QzQ3LjcyIDAuNiA0My4zIDUuMDQgNDMuMyAxMC43QzQzLjMgMTYuMjggNDcuNyAyMC44IDUzLjIyIDIwLjhDNTguMzQgMjAuOCA2MS44IDE3LjE4IDYxLjggMTEuOEM2MS44IDEwLjQgNjEuNTIgOS4yMiA2MS4wNCA4LjMyTDUzLjEgOC41NFoiIGZpbGw9IiM0Mjg1RjgiLz4KPHBhdGggZD0iTTc1IDExLjZDNzUgOS42IDc2LjQyIDguNTQgNzcuODYgOC41NEM3OS4zNCA4LjU0IDgwLjQ4IDkuNTIgODAuNDggMTEuNkM4MC40OCAxMy42OCA3OS4zIDE0LjY2IDc3Ljg2IDE0LjY2Qzc2LjQyIDE4LjY2IDc1IDEzLjYgNzUgMTEuNlpNNzMuMDIgMTEuNkM3My4wMiAxNC41IDc1IDE3IDc3Ljg2IDE3QzgwLjcyIDE3IDgyLjYyIDE0LjUgODIuNjIgMTEuNkM4Mi42MiA4LjcgODAuNzIgNi4yIDc3Ljg2IDYuMkM3NSA2LjIgNzMuMDIgOC43IDczLjAyIDExLjZaIiBmaWxsPSIjMzRBODUzIi8+Cjwvc3ZnPgo=') no-repeat center;
   background-size: contain;
   margin-bottom: 8px;
 }
@@ -81,12 +81,13 @@ body {
   margin-bottom: 16px;
 }
 
-/* Sign in header */
+/* Form elements */
 .signin-header {
   font-size: 24px;
   font-weight: 400;
   color: #202124;
   margin-bottom: 8px;
+  text-align: center;
 }
 
 .sub-header {
@@ -94,9 +95,9 @@ body {
   font-weight: 400;
   color: #202124;
   margin-bottom: 40px;
+  text-align: center;
 }
 
-/* Form */
 .form-container {
   width: 100%;
 }
@@ -129,41 +130,22 @@ body {
   display: none;
 }
 
-.email-info {
+.info-text {
   font-size: 14px;
   color: #5f6368;
   margin-bottom: 40px;
   line-height: 1.5;
 }
 
-.forgot-email {
+.link {
   color: #1a73e8;
   text-decoration: none;
   font-weight: 500;
   cursor: pointer;
   display: inline-block;
-  margin-top: 8px;
 }
 
-.forgot-email:hover {
-  text-decoration: underline;
-}
-
-/* Guest mode section */
-.guest-mode {
-  margin-top: 32px;
-  color: #5f6368;
-  font-size: 14px;
-}
-
-.guest-mode-link {
-  color: #1a73e8;
-  text-decoration: none;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.guest-mode-link:hover {
+.link:hover {
   text-decoration: underline;
 }
 
@@ -173,19 +155,7 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-top: 40px;
-}
-
-.create-account {
-  color: #1a73e8;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 14px;
-  padding: 10px 0;
-  cursor: pointer;
-}
-
-.create-account:hover {
-  text-decoration: underline;
+  width: 100%;
 }
 
 .next-button {
@@ -215,28 +185,106 @@ body {
   box-shadow: none;
 }
 
-/* Language selector */
-.language-selector {
-  margin-top: 24px;
-  font-size: 12px;
+.secondary-button {
+  background: transparent;
+  color: #1a73e8;
+  border: 1px solid #dadce0;
+  padding: 10px 24px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  height: 36px;
+  transition: background-color 0.2s;
+}
+
+.secondary-button:hover {
+  background: #f8f9fa;
+}
+
+/* Loading spinner */
+.spinner {
+  display: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #fff;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Forgot password specific */
+.recovery-options {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 24px;
+  margin: 24px 0;
+}
+
+.option-card {
+  background: white;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.option-card:hover {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+}
+
+.option-title {
+  font-weight: 500;
+  color: #202124;
+  margin-bottom: 8px;
+}
+
+.option-description {
   color: #5f6368;
+  font-size: 14px;
+}
+
+/* Verification page */
+.verification-container {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.verification-icon {
+  width: 80px;
+  height: 80px;
+  background: #34a853;
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  margin: 0 auto 24px;
 }
 
-.language-selector select {
-  background: transparent;
-  border: none;
-  color: #1a73e8;
-  font-size: 12px;
-  padding: 8px 16px 8px 8px;
-  cursor: pointer;
-  font-family: 'Google Sans', 'Roboto', sans-serif;
+.verification-icon svg {
+  width: 40px;
+  height: 40px;
+  fill: white;
 }
 
-.language-selector select:focus {
-  outline: none;
+.verification-title {
+  font-size: 28px;
+  font-weight: 400;
+  color: #202124;
+  margin-bottom: 16px;
+}
+
+.verification-text {
+  color: #5f6368;
+  margin-bottom: 32px;
+  line-height: 1.6;
 }
 
 /* Footer */
@@ -276,77 +324,27 @@ body {
   align-items: center;
 }
 
-/* Loading spinner */
-.spinner {
-  display: none;
-  width: 16px;
-  height: 16px;
-  border: 2px solid #fff;
-  border-top: 2px solid transparent;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Password step */
-.password-step {
-  display: none;
+/* Progress bar */
+.progress-bar {
   width: 100%;
+  height: 4px;
+  background: #e8eaed;
+  border-radius: 2px;
+  margin: 24px 0;
+  overflow: hidden;
 }
 
-.password-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 24px;
-}
-
-.back-button {
-  background: none;
-  border: none;
-  color: #1a73e8;
-  font-size: 14px;
-  cursor: pointer;
-  padding: 8px;
-  margin-right: 16px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.back-button:hover {
-  background: #f8f9fa;
-  border-radius: 50%;
-}
-
-.user-email {
-  font-size: 14px;
-  color: #202124;
-  font-weight: 500;
-}
-
-.user-avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
+.progress-fill {
+  height: 100%;
   background: #1a73e8;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 500;
-  margin-right: 12px;
+  width: 0%;
+  transition: width 0.3s;
 }
 
 /* Responsive */
 @media (max-width: 480px) {
-  .container {
+  .page-container {
     padding: 24px;
-    border: none;
-    width: 100%;
   }
   
   .header {
@@ -369,16 +367,80 @@ body {
   }
 }
 
-@media (max-width: 360px) {
-  .buttons-container {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-  
-  .next-button {
-    align-self: flex-end;
-  }
+/* Page transitions */
+.page {
+  display: none;
+  width: 100%;
+}
+
+.page.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Back button */
+.back-button {
+  background: none;
+  border: none;
+  color: #1a73e8;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 24px;
+  align-self: flex-start;
+}
+
+.back-button:hover {
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+/* User info */
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #1a73e8;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  margin-right: 12px;
+}
+
+.user-details {
+  flex: 1;
+}
+
+.user-email {
+  font-weight: 500;
+  color: #202124;
+}
+
+.user-change {
+  color: #1a73e8;
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 4px;
 }
 </style>
 </head>
@@ -390,93 +452,327 @@ body {
       <div class="google-logo"></div>
     </div>
     <div class="header-right">
-      <a class="help-link" onclick="showHelp()">Help</a>
-      <a class="privacy-link" onclick="showPrivacy()">Privacy</a>
-      <a class="terms-link" onclick="showTerms()">Terms</a>
+      <a class="help-link" onclick="showPage('help')">Help</a>
+      <a class="privacy-link" onclick="showPage('privacy')">Privacy</a>
+      <a class="terms-link" onclick="showPage('terms')">Terms</a>
     </div>
   </div>
 
-  <!-- Main container -->
-  <div class="container">
-    <!-- Email step -->
-    <div id="emailStep" class="form-container">
+  <!-- Main Container for all pages -->
+  <div class="page-container">
+    
+    <!-- PAGE 1: Email Entry -->
+    <div id="page-email" class="page active">
       <div class="logo-container">
         <div class="gmail-text">Sign in</div>
       </div>
       
       <h1 class="signin-header">to continue to Gmail</h1>
       
-      <input type="email" id="emailInput" class="input-field" placeholder="Email or phone" autocomplete="username" autofocus>
-      <div id="emailError" class="error-message">Couldn't find your Google Account</div>
-      
-      <div class="email-info">
-        Not your computer? Use a Private Window to sign in.
-        <a class="forgot-email" onclick="showForgotEmail()">Forgot email?</a>
-      </div>
-      
-      <div class="guest-mode">
-        <a class="guest-mode-link" onclick="useGuestMode()">Use Guest mode instead</a>
-      </div>
-      
-      <div class="buttons-container">
-        <a class="create-account" onclick="createAccount()">Create account</a>
-        <button id="nextButton" class="next-button" onclick="nextStep()">Next</button>
+      <div class="form-container">
+        <input type="email" id="emailInput" class="input-field" placeholder="Email or phone" autocomplete="username" autofocus>
+        <div id="emailError" class="error-message">Couldn't find your Google Account</div>
+        
+        <div class="info-text">
+          Not your computer? Use a Private Window to sign in.
+          <a class="link" onclick="showPage('forgot-email')">Forgot email?</a>
+        </div>
+        
+        <div class="info-text">
+          <a class="link" onclick="showPage('guest-mode')">Use Guest mode instead</a>
+        </div>
+        
+        <div class="buttons-container">
+          <a class="link" onclick="showPage('create-account')">Create account</a>
+          <button class="next-button" onclick="validateEmail()">Next</button>
+        </div>
       </div>
     </div>
 
-    <!-- Password step -->
-    <div id="passwordStep" class="password-step">
-      <div class="password-header">
-        <button class="back-button" onclick="goBack()">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="#1a73e8">
-            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
-          </svg>
-        </button>
+    <!-- PAGE 2: Password Entry -->
+    <div id="page-password" class="page">
+      <button class="back-button" onclick="showPage('email')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#1a73e8">
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+        </svg>
+        Back
+      </button>
+      
+      <div class="user-info">
         <div class="user-avatar" id="userAvatar">U</div>
-        <div class="user-email" id="userEmailDisplay"></div>
+        <div class="user-details">
+          <div class="user-email" id="userEmailDisplay">user@example.com</div>
+          <div class="user-change" onclick="showPage('email')">Change account</div>
+        </div>
       </div>
       
-      <input type="password" id="passwordInput" class="input-field" placeholder="Enter your password" autocomplete="current-password">
-      <div id="passwordError" class="error-message">Wrong password. Try again or click Forgot password to reset it.</div>
+      <h1 class="signin-header">Welcome</h1>
       
-      <div class="email-info">
-        <a class="forgot-email" onclick="showForgotPassword()">Forgot password?</a>
-      </div>
-      
-      <div class="buttons-container">
-        <a class="create-account" onclick="showMoreOptions()">More options</a>
-        <button id="signInButton" class="next-button" onclick="signIn()">
-          <span>Sign in</span>
-          <div class="spinner" id="signInSpinner"></div>
-        </button>
-      </div>
-      
-      <div class="language-selector">
-        <select id="languageSelect" onchange="changeLanguage(this.value)">
-          <option value="en" selected>English (United States)</option>
-          <option value="es">Español</option>
-          <option value="fr">Français</option>
-          <option value="de">Deutsch</option>
-          <option value="lt">Lietuvių</option>
-        </select>
+      <div class="form-container">
+        <input type="password" id="passwordInput" class="input-field" placeholder="Enter your password" autocomplete="current-password">
+        <div id="passwordError" class="error-message">Wrong password. Try again or click Forgot password to reset it.</div>
+        
+        <div class="info-text">
+          <a class="link" onclick="showPage('forgot-password')">Forgot password?</a>
+        </div>
+        
+        <div class="buttons-container">
+          <a class="link" onclick="showPage('more-options')">More options</a>
+          <button class="next-button" onclick="validatePassword()">
+            <span>Sign in</span>
+            <div class="spinner" id="signInSpinner"></div>
+          </button>
+        </div>
       </div>
     </div>
+
+    <!-- PAGE 3: Forgot Password -->
+    <div id="page-forgot-password" class="page">
+      <button class="back-button" onclick="showPage('password')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#1a73e8">
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+        </svg>
+        Back
+      </button>
+      
+      <div class="logo-container">
+        <h1 class="signin-header">Reset your password</h1>
+      </div>
+      
+      <div class="form-container">
+        <div class="info-text">
+          Enter the email address, phone number, or username associated with your Google Account.
+        </div>
+        
+        <input type="text" id="recoveryInput" class="input-field" placeholder="Email, phone, or username" autofocus>
+        <div id="recoveryError" class="error-message">Please enter an email, phone number, or username</div>
+        
+        <div class="recovery-options">
+          <div class="option-card" onclick="selectRecoveryOption('email')">
+            <div class="option-title">Send reset link via email</div>
+            <div class="option-description">We'll send a reset link to your recovery email</div>
+          </div>
+          
+          <div class="option-card" onclick="selectRecoveryOption('sms')">
+            <div class="option-title">Get a verification code</div>
+            <div class="option-description">We'll send a code to your recovery phone number</div>
+          </div>
+          
+          <div class="option-card" onclick="selectRecoveryOption('questions')">
+            <div class="option-title">Answer security questions</div>
+            <div class="option-description">Verify your identity with security questions</div>
+          </div>
+        </div>
+        
+        <div class="buttons-container">
+          <button class="secondary-button" onclick="showPage('password')">Cancel</button>
+          <button class="next-button" onclick="processRecovery()">Continue</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 4: Forgot Email -->
+    <div id="page-forgot-email" class="page">
+      <button class="back-button" onclick="showPage('email')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#1a73e8">
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+        </svg>
+        Back
+      </button>
+      
+      <div class="logo-container">
+        <h1 class="signin-header">Find your email</h1>
+      </div>
+      
+      <div class="form-container">
+        <div class="info-text">
+          Enter your recovery email or phone number to search for your Google Account.
+        </div>
+        
+        <input type="text" id="findEmailInput" class="input-field" placeholder="Recovery email or phone number" autofocus>
+        <div id="findEmailError" class="error-message">Please enter a recovery email or phone number</div>
+        
+        <div class="buttons-container">
+          <button class="secondary-button" onclick="showPage('email')">Cancel</button>
+          <button class="next-button" onclick="findEmail()">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 5: Create Account -->
+    <div id="page-create-account" class="page">
+      <button class="back-button" onclick="showPage('email')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#1a73e8">
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+        </svg>
+        Back
+      </button>
+      
+      <div class="logo-container">
+        <h1 class="signin-header">Create your Google Account</h1>
+      </div>
+      
+      <div class="form-container">
+        <div class="info-text">
+          Enter your information to create a new Google Account for Gmail.
+        </div>
+        
+        <input type="text" id="firstName" class="input-field" placeholder="First name" style="width: calc(50% - 8px); margin-right: 16px; display: inline-block;">
+        <input type="text" id="lastName" class="input-field" placeholder="Last name" style="width: calc(50% - 8px); display: inline-block;">
+        
+        <input type="email" id="newEmail" class="input-field" placeholder="Username@gmail.com">
+        <div id="emailAvailability" style="margin: -20px 0 24px 0; font-size: 12px;"></div>
+        
+        <input type="password" id="newPassword" class="input-field" placeholder="Password">
+        <div id="passwordStrength" style="margin: -20px 0 24px 0; font-size: 12px;"></div>
+        
+        <input type="password" id="confirmPassword" class="input-field" placeholder="Confirm">
+        <div id="passwordMatch" style="margin: -20px 0 24px 0; font-size: 12px;"></div>
+        
+        <div class="progress-bar">
+          <div class="progress-fill" id="passwordStrengthBar"></div>
+        </div>
+        
+        <div class="buttons-container">
+          <button class="secondary-button" onclick="showPage('email')">Cancel</button>
+          <button class="next-button" onclick="createAccount()">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 6: Verification Code -->
+    <div id="page-verification" class="page">
+      <div class="verification-container">
+        <div class="verification-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+          </svg>
+        </div>
+        
+        <h2 class="verification-title">Check your email</h2>
+        
+        <div class="verification-text">
+          We've sent a verification code to <strong id="verificationEmail">user@example.com</strong><br>
+          Enter the 6-digit code to continue.
+        </div>
+        
+        <div class="form-container" style="max-width: 300px;">
+          <input type="text" id="verificationCode" class="input-field" placeholder="6-digit code" maxlength="6" style="text-align: center; font-size: 24px; letter-spacing: 8px;" autofocus>
+          <div id="verificationError" class="error-message">Invalid code. Please try again.</div>
+          
+          <div class="info-text" style="text-align: center;">
+            Didn't receive the code? <a class="link" onclick="resendCode()">Resend</a>
+          </div>
+          
+          <div class="buttons-container">
+            <button class="secondary-button" onclick="showPage('forgot-password')">Back</button>
+            <button class="next-button" onclick="verifyCode()">Verify</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 7: Success -->
+    <div id="page-success" class="page">
+      <div class="verification-container">
+        <div class="verification-icon" style="background: #34a853;">
+          <svg viewBox="0 0 24 24">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+          </svg>
+        </div>
+        
+        <h2 class="verification-title">Successfully signed in!</h2>
+        
+        <div class="verification-text">
+          Welcome back to Gmail<br>
+          Redirecting to your inbox...
+        </div>
+        
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 100%;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 8: More Options -->
+    <div id="page-more-options" class="page">
+      <button class="back-button" onclick="showPage('password')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#1a73e8">
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+        </svg>
+        Back
+      </button>
+      
+      <div class="logo-container">
+        <h1 class="signin-header">More ways to sign in</h1>
+      </div>
+      
+      <div class="recovery-options">
+        <div class="option-card" onclick="selectSignInOption('security-key')">
+          <div class="option-title">Use a security key</div>
+          <div class="option-description">Insert your security key into the USB port</div>
+        </div>
+        
+        <div class="option-card" onclick="selectSignInOption('authenticator')">
+          <div class="option-title">Use Google Authenticator</div>
+          <div class="option-description">Get a verification code from the app</div>
+        </div>
+        
+        <div class="option-card" onclick="selectSignInOption('backup-codes')">
+          <div class="option-title">Use backup codes</div>
+          <div class="option-description">Enter one of your 10-digit backup codes</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 9: Guest Mode -->
+    <div id="page-guest-mode" class="page">
+      <button class="back-button" onclick="showPage('email')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#1a73e8">
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+        </svg>
+        Back
+      </button>
+      
+      <div class="logo-container">
+        <h1 class="signin-header">Guest mode</h1>
+      </div>
+      
+      <div class="form-container">
+        <div class="info-text">
+          Guest mode allows you to browse privately. Other people using this device won't see your activity.
+        </div>
+        
+        <div class="recovery-options">
+          <div class="option-card" onclick="openGuestWindow()">
+            <div class="option-title">Open Guest window</div>
+            <div class="option-description">Start a new browsing session in Guest mode</div>
+          </div>
+          
+          <div class="option-card" onclick="showPage('incognito-info')">
+            <div class="option-title">Learn about Incognito mode</div>
+            <div class="option-description">How private browsing works in Chrome</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <!-- Footer -->
   <div class="footer">
     <div class="footer-content">
       <div class="footer-left">
-        <a class="footer-link" onclick="showAbout()">About Google</a>
-        <a class="footer-link" onclick="showPrivacy()">Privacy</a>
-        <a class="footer-link" onclick="showTerms()">Terms</a>
-        <a class="footer-link" onclick="showHelp()">Help</a>
+        <a class="footer-link" onclick="showPage('about')">About Google</a>
+        <a class="footer-link" onclick="showPage('privacy')">Privacy</a>
+        <a class="footer-link" onclick="showPage('terms')">Terms</a>
+        <a class="footer-link" onclick="showPage('help')">Help</a>
       </div>
       <div class="footer-right">
-        <select class="footer-link" style="border: none; background: transparent; color: #70757a; font-size: 12px; cursor: pointer;" onchange="changeLanguage(this.value)">
-          <option value="en">English (United States)</option>
-          <option value="es">Español</option>
-          <option value="fr">Français</option>
+        <select class="footer-link" style="border: none; background: transparent; color: #70757a; font-size: 12px; cursor: pointer;">
+          <option>English (United States)</option>
+          <option>Español</option>
+          <option>Français</option>
         </select>
         <span class="footer-link">‎△⃒⃘</span>
       </div>
@@ -484,16 +780,33 @@ body {
   </div>
 
   <script>
-    let currentEmail = '';
+    let currentUserEmail = '';
+    let currentRecoveryMethod = '';
     let loginAttempts = 0;
     const MAX_ATTEMPTS = 5;
 
-    function validateEmail(email) {
-      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return re.test(email) || email.includes('@gmail.com');
+    // Page navigation
+    function showPage(pageId) {
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+      });
+      
+      // Show requested page
+      const page = document.getElementById(`page-${pageId}`);
+      if (page) {
+        page.classList.add('active');
+        
+        // Set focus on first input if exists
+        const input = page.querySelector('input');
+        if (input) {
+          setTimeout(() => input.focus(), 100);
+        }
+      }
     }
 
-    function nextStep() {
+    // Email validation
+    function validateEmail() {
       const emailInput = document.getElementById('emailInput');
       const emailError = document.getElementById('emailError');
       const email = emailInput.value.trim();
@@ -505,30 +818,29 @@ body {
         return;
       }
       
-      if (!validateEmail(email) && !/^\d{10,}$/.test(email.replace(/\D/g, ''))) {
+      // Basic email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const phoneRegex = /^\d{10,}$/;
+      
+      if (!emailRegex.test(email) && !phoneRegex.test(email.replace(/\D/g, ''))) {
         emailError.textContent = "Couldn't find your Google Account";
         emailError.style.display = 'block';
         emailInput.classList.add('error');
         return;
       }
       
-      // Success - proceed to password step
-      currentEmail = email;
+      // Store email and show password page
+      currentUserEmail = email;
       document.getElementById('userEmailDisplay').textContent = email;
       document.getElementById('userAvatar').textContent = email.charAt(0).toUpperCase();
-      
-      document.getElementById('emailStep').style.display = 'none';
-      document.getElementById('passwordStep').style.display = 'block';
-      
-      setTimeout(() => {
-        document.getElementById('passwordInput').focus();
-      }, 100);
+      showPage('password');
     }
 
-    function signIn() {
+    // Password validation
+    function validatePassword() {
       const passwordInput = document.getElementById('passwordInput');
       const passwordError = document.getElementById('passwordError');
-      const signInButton = document.getElementById('signInButton');
+      const signInButton = document.getElementById('signInSpinner').parentElement;
       const spinner = document.getElementById('signInSpinner');
       const password = passwordInput.value;
       
@@ -541,29 +853,28 @@ body {
       
       // Show loading
       signInButton.disabled = true;
-      spinner.style.display = 'block';
-      signInButton.querySelector('span').style.display = 'none';
+      spinner.style.display = 'inline-block';
+      signInButton.querySelector('span').style.opacity = '0.5';
       
-      // Simulate authentication process
+      // Simulate authentication
       setTimeout(() => {
         spinner.style.display = 'none';
-        signInButton.querySelector('span').style.display = 'inline';
+        signInButton.querySelector('span').style.opacity = '1';
         
         loginAttempts++;
         
         if (loginAttempts >= MAX_ATTEMPTS) {
-          // Too many attempts
           passwordError.textContent = "Too many failed attempts. Try again later or reset your password.";
           passwordError.style.display = 'block';
           signInButton.disabled = true;
           setTimeout(() => {
             signInButton.disabled = false;
-          }, 30000); // 30 second lockout
+            loginAttempts = 0;
+          }, 30000);
           return;
         }
         
         if (password.length < 8) {
-          // Invalid password
           passwordError.textContent = "Wrong password. Try again or click Forgot password to reset it.";
           passwordError.style.display = 'block';
           passwordInput.classList.add('error');
@@ -571,118 +882,10 @@ body {
           return;
         }
         
-        // Successful login simulation
-        alert(`Successfully signed in as ${currentEmail}\n\nThis is a simulation. In a real Google login, you would be redirected to Gmail.`);
+        // Successful login
+        document.getElementById('verificationEmail').textContent = currentUserEmail;
+        showPage('success');
         
-        // Reset form for next use
-        resetForm();
-      }, 1500);
-    }
-
-    function goBack() {
-      document.getElementById('passwordStep').style.display = 'none';
-      document.getElementById('emailStep').style.display = 'block';
-      document.getElementById('emailInput').focus();
-    }
-
-    function resetForm() {
-      document.getElementById('emailInput').value = '';
-      document.getElementById('passwordInput').value = '';
-      document.getElementById('emailError').style.display = 'none';
-      document.getElementById('passwordError').style.display = 'none';
-      document.getElementById('emailInput').classList.remove('error');
-      document.getElementById('passwordInput').classList.remove('error');
-      document.getElementById('passwordStep').style.display = 'none';
-      document.getElementById('emailStep').style.display = 'block';
-      document.getElementById('signInButton').disabled = false;
-      document.getElementById('signInSpinner').style.display = 'none';
-      document.getElementById('signInButton').querySelector('span').style.display = 'inline';
-      loginAttempts = 0;
-      currentEmail = '';
-    }
-
-    function showForgotEmail() {
-      alert("To recover your email:\n\n1. Go to the account recovery page\n2. Enter your recovery phone number or email\n3. Follow the instructions sent to you");
-    }
-
-    function showForgotPassword() {
-      alert(`Password reset for ${currentEmail || 'your account'}:\n\n1. Go to accounts.google.com/signin/recovery\n2. Enter ${currentEmail || 'your email'}\n3. Follow the verification steps\n4. Create a new password`);
-    }
-
-    function createAccount() {
-      alert("Create a Google Account:\n\n1. Go to accounts.google.com/signup\n2. Enter your name and desired email\n3. Create a strong password\n4. Add recovery information\n5. Accept terms and conditions");
-    }
-
-    function useGuestMode() {
-      alert("Guest mode allows you to use this browser privately. Other people using this device won't see your activity, but your downloads and bookmarks will be saved.\n\nTo use Guest mode, click the profile icon in Chrome and select 'Open Guest window'.");
-    }
-
-    function showMoreOptions() {
-      alert("More options:\n\n• Sign in with a different account\n• Use security key\n• Use Google Authenticator\n• Get help signing in");
-    }
-
-    function showHelp() {
-      alert("Google Accounts Help:\n\nVisit support.google.com/accounts for help with signing in, security, and managing your account.");
-    }
-
-    function showPrivacy() {
-      alert("Privacy Policy:\n\nVisit policies.google.com/privacy to learn how Google collects and uses your data.");
-    }
-
-    function showTerms() {
-      alert("Terms of Service:\n\nVisit policies.google.com/terms to read Google's Terms of Service.");
-    }
-
-    function showAbout() {
-      alert("About Google:\n\nOur mission is to organize the world's information and make it universally accessible and useful.");
-    }
-
-    function changeLanguage(lang) {
-      const messages = {
-        en: { signIn: "Sign in", toGmail: "to continue to Gmail", emailPlaceholder: "Email or phone" },
-        es: { signIn: "Iniciar sesión", toGmail: "para ir a Gmail", emailPlaceholder: "Correo electrónico o teléfono" },
-        fr: { signIn: "Se connecter", toGmail: "pour accéder à Gmail", emailPlaceholder: "Adresse e-mail ou téléphone" },
-        de: { signIn: "Anmelden", toGmail: "um zu Gmail zu wechseln", emailPlaceholder: "E-Mail-Adresse oder Telefonnummer" },
-        lt: { signIn: "Prisijungti", toGmail: "kad tęstumėte naudojimąsi Gmail", emailPlaceholder: "El. paštas arba telefonas" }
-      };
-      
-      const msg = messages[lang] || messages.en;
-      document.querySelector('.gmail-text').textContent = msg.signIn;
-      document.querySelector('.sub-header').textContent = msg.toGmail;
-      document.getElementById('emailInput').placeholder = msg.emailPlaceholder;
-      
-      // Update footer language selector
-      const footerSelect = document.querySelector('.footer-right select');
-      if (footerSelect) {
-        footerSelect.value = lang;
-      }
-    }
-
-    // Event listeners for real-time validation
-    document.getElementById('emailInput').addEventListener('input', function() {
-      this.classList.remove('error');
-      document.getElementById('emailError').style.display = 'none';
-    });
-
-    document.getElementById('passwordInput').addEventListener('input', function() {
-      this.classList.remove('error');
-      document.getElementById('passwordError').style.display = 'none';
-    });
-
-    // Enter key support
-    document.getElementById('emailInput').addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') nextStep();
-    });
-
-    document.getElementById('passwordInput').addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') signIn();
-    });
-
-    // Auto-focus and select email input on page load
-    window.onload = function() {
-      document.getElementById('emailInput').focus();
-      document.getElementById('emailInput').select();
-    };
-  </script>
-</body>
-</html>
+        // Simulate redirect to Gmail
+        setTimeout(() => {
+          alert(`Successfully signed in as ${currentUser
