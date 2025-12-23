@@ -2,123 +2,687 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Sign in – Google Accounts</title>
+<title>Sign in - Google Accounts</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400;0,500;1,400&display=swap">
+<link rel="icon" href="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico">
 <style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  margin: 0;
-  background: #f1f3f4;
-  font-family: Arial, sans-serif;
-}
-
-.container {
-  max-width: 448px;
-  margin: 80px auto;
+  font-family: 'Google Sans', 'Roboto', 'Segoe UI', Arial, sans-serif;
   background: #fff;
-  border-radius: 8px;
-  padding: 48px 40px 36px;
-  box-shadow: 0 2px 10px rgba(0,0,0,.15);
+  color: #202124;
+  font-size: 14px;
+  line-height: 1.4286;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.logo {
-  text-align: center;
-  font-size: 26px;
-  font-weight: 600;
-  color: #4285f4;
-  margin-bottom: 10px;
-}
-
-h1 {
-  font-weight: 400;
-  font-size: 24px;
-  margin: 0;
-  text-align: center;
-}
-
-.sub {
-  text-align: center;
-  color: #5f6368;
-  margin-top: 8px;
-  margin-bottom: 30px;
-}
-
-.field {
-  margin-bottom: 20px;
-}
-
-input {
-  width: 100%;
-  padding: 14px;
-  font-size: 16px;
-  border-radius: 4px;
-  border: 1px solid #dadce0;
-}
-
-input:focus {
-  outline: none;
-  border: 2px solid #1a73e8;
-}
-
-.footer {
+/* Header */
+.header {
+  padding: 20px 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-button {
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.help-link, .privacy-link, .terms-link {
+  color: #1a73e8;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.help-link:hover, .privacy-link:hover, .terms-link:hover {
+  text-decoration: underline;
+}
+
+/* Main container */
+.container {
+  max-width: 448px;
+  margin: 0 auto;
+  padding: 48px 40px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+/* Logo */
+.logo-container {
+  margin-bottom: 16px;
+}
+
+.google-logo {
+  width: 75px;
+  height: 24px;
+  background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzUiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA3NSAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTkuOCA4LjU0VjEzLjg2SDE0LjE4QzEzLjk2IDE1LjE0IDEyLjk2IDE3LjYgOS44OCAxNy42QzYuMjggMTcuNiAzLjM0IDE0LjUyIDMuMzQgMTAuN0MzLjM0IDYuODggNi4zIDMuOCA5LjkgMy44QzEyLjA0IDMuOCAxMy40NCA0Ljc0IDE0LjIyIDUuNUwxNi42IDMuMTRDMTUuMDYgMS42OCAxMi45NiAwLjYgOS45MiAwLjZDNC40MiAwLjYgMCA1LjA0IDAgMTAuN0MwIDE2LjI4IDQuNCAyMC44IDkuOTIgMjAuOEMxNS4wNCAyMC44IDE4LjUgMTcuMTggMTguNSAxMS44QzE4LjUgMTAuNCAxOC4yMiA5LjIyIDE3Ljc0IDguMzJMMDkuOCA4LjU0WiIgZmlsbD0iIzQyODVGOCIvPgo8cGF0aCBkPSJNMjQuNDIgMTEuNkMyNC40MiA5LjYgMjUuODIgOC41NCAyNy4yNiA4LjU0QzI4Ljc0IDguNTQgMjkuODggOS41MiAyOS44OCAxMS42QzI5Ljg4IDEzLjY4IDI4LjcgMTQuNjYgMjcuMjYgMTQuNjZDMjUuODIgMTQuNjYgMjQuNDIgMTMuNiAyNC40MiAxMS42Wk0yMi40MiAxMS42QzIyLjQyIDE0LjUgMjQuNCAxNyAyNy4yNiAxN0MzMC4xMiAxNyAzMi4wMiAxNC41IDMyLjAyIDExLjZDMzIuMDIgOC43IDMwLjEyIDYuMiAyNy4yNiA2LjJDMjQuNCA2LjIgMjIuNDIgOC43IDIyLjQyIDExLjZaIiBmaWxsPSIjMzRBODUzIi8+CjxwYXRoIGQ9Ik0zNC4wNiAyLjgyVjE5Ljk4SDM3LjA4VjEyLjYySDQwLjUyTDM3LjU2IDIuODJIMzQuMDZaIiBmaWxsPSIjRkNCQjAwIi8+CjxwYXRoIGQ9Ik01My4xIDguNTRWMTMuODZINTcuNDhDNTcuMjYgMTUuMTQgNTYuMjYgMTcuNiA1My4xOCAxNy42QzQ5LjU4IDE3LjYgNDYuNjQgMTQuNTIgNDYuNjQgMTAuN0M0Ni42NCA2Ljg4IDQ5LjYgMy44IDUzLjIgMy44QzU1LjM0IDMuOCA1Ni43NCA0Ljc0IDU3LjUyIDUuNUw1OS45IDMuMTRDNTguMzYgMS42OCA1Ni4yNiAwLjYgNTMuMjIgMC42QzQ3LjcyIDAuNiA0My4zIDUuMDQgNDMuMyAxMC43QzQzLjMgMTYuMjggNDcuNyAyMC44IDUzLjIyIDIwLjhDNTguMzQgMjAuOCA2MS44IDE3LjE4IDYxLjggMTEuOEM2MS44IDEwLjQgNjEuNTIgOS4yMiA2MS4wNCA4LjMyTDUzLjEgOC41NFoiIGZpbGw9IiM0Mjg1RjgiLz4KPHBhdGggZD0iTTc1IDExLjZDNzUgOS42IDc2LjQyIDguNTQgNzcuODYgOC41NEM3OS4zNCA4LjU0IDgwLjQ4IDkuNTIgODAuNDggMTEuNkM4MC40OCAxMy42OCA3OS4zIDE0LjY2IDc3Ljg2IDE0LjY2Qzc2LjQyIDE0LjY2IDc1IDEzLjYgNzUgMTEuNlpNNzMuMDIgMTEuNkM3My4wMiAxNC41IDc1IDE3IDc3Ljg2IDE3QzgwLjcyIDE3IDgyLjYyIDE0LjUgODIuNjIgMTEuNkM4Mi42MiA4LjcgODAuNzIgNi4yIDc3Ljg2IDYuMkM3NSA2LjIgNzMuMDIgOC43IDczLjAyIDExLjZaIiBmaWxsPSIjMzRBODUzIi8+Cjwvc3ZnPgo=') no-repeat center;
+  background-size: contain;
+  margin-bottom: 8px;
+}
+
+.gmail-text {
+  font-size: 32px;
+  font-weight: 400;
+  color: #202124;
+  margin-bottom: 16px;
+}
+
+/* Sign in header */
+.signin-header {
+  font-size: 24px;
+  font-weight: 400;
+  color: #202124;
+  margin-bottom: 8px;
+}
+
+.sub-header {
+  font-size: 16px;
+  font-weight: 400;
+  color: #202124;
+  margin-bottom: 40px;
+}
+
+/* Form */
+.form-container {
+  width: 100%;
+}
+
+.input-field {
+  width: 100%;
+  height: 56px;
+  padding: 13px 15px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #dadce0;
+  margin-bottom: 24px;
+  transition: border-color 0.2s;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
+}
+
+.input-field:focus {
+  outline: none;
+  border: 2px solid #1a73e8;
+}
+
+.input-field.error {
+  border-color: #d93025;
+}
+
+.error-message {
+  color: #d93025;
+  font-size: 12px;
+  margin: -20px 0 24px 0;
+  display: none;
+}
+
+.email-info {
+  font-size: 14px;
+  color: #5f6368;
+  margin-bottom: 40px;
+  line-height: 1.5;
+}
+
+.forgot-email {
+  color: #1a73e8;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+.forgot-email:hover {
+  text-decoration: underline;
+}
+
+/* Guest mode section */
+.guest-mode {
+  margin-top: 32px;
+  color: #5f6368;
+  font-size: 14px;
+}
+
+.guest-mode-link {
+  color: #1a73e8;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.guest-mode-link:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.create-account {
+  color: #1a73e8;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.create-account:hover {
+  text-decoration: underline;
+}
+
+.next-button {
   background: #1a73e8;
   color: white;
   border: none;
   padding: 10px 24px;
   border-radius: 4px;
   font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  min-width: 88px;
+  height: 36px;
+  transition: background-color 0.2s, box-shadow 0.2s;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
+}
+
+.next-button:hover {
+  background: #1558b0;
+  box-shadow: 0 1px 2px rgba(66, 133, 244, 0.3);
+}
+
+.next-button:disabled {
+  background: #f1f3f4;
+  color: #9aa0a6;
+  cursor: default;
+  box-shadow: none;
+}
+
+/* Language selector */
+.language-selector {
+  margin-top: 24px;
+  font-size: 12px;
+  color: #5f6368;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.language-selector select {
+  background: transparent;
+  border: none;
+  color: #1a73e8;
+  font-size: 12px;
+  padding: 8px 16px 8px 8px;
+  cursor: pointer;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
+}
+
+.language-selector select:focus {
+  outline: none;
+}
+
+/* Footer */
+.footer {
+  background: #f2f2f2;
+  padding: 24px 32px;
+  margin-top: auto;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-left {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-link {
+  color: #70757a;
+  text-decoration: none;
+  font-size: 12px;
   cursor: pointer;
 }
 
-button:hover {
-  background: #1558b0;
+.footer-link:hover {
+  text-decoration: underline;
 }
 
-.mock {
-  margin-top: 25px;
-  font-size: 12px;
-  color: #999;
-  text-align: center;
+.footer-right {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+/* Loading spinner */
+.spinner {
+  display: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #fff;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Password step */
+.password-step {
+  display: none;
+  width: 100%;
+}
+
+.password-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #1a73e8;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px;
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.back-button:hover {
+  background: #f8f9fa;
+  border-radius: 50%;
+}
+
+.user-email {
+  font-size: 14px;
+  color: #202124;
+  font-weight: 500;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #1a73e8;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  margin-right: 12px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .container {
+    padding: 24px;
+    border: none;
+    width: 100%;
+  }
+  
+  .header {
+    padding: 16px;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+  
+  .footer-left {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .gmail-text {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 360px) {
+  .buttons-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .next-button {
+    align-self: flex-end;
+  }
 }
 </style>
 </head>
 
 <body>
-
-<div class="container">
-  <div class="logo">Google</div>
-  <h1>Sign in</h1>
-  <div class="sub">Use your Google Account</div>
-
-  <div class="field">
-    <input type="text" placeholder="Email or phone">
+  <!-- Header -->
+  <div class="header">
+    <div class="logo">
+      <div class="google-logo"></div>
+    </div>
+    <div class="header-right">
+      <a class="help-link" onclick="showHelp()">Help</a>
+      <a class="privacy-link" onclick="showPrivacy()">Privacy</a>
+      <a class="terms-link" onclick="showTerms()">Terms</a>
+    </div>
   </div>
 
-  <div class="field">
-    <input type="password" placeholder="Enter your password">
+  <!-- Main container -->
+  <div class="container">
+    <!-- Email step -->
+    <div id="emailStep" class="form-container">
+      <div class="logo-container">
+        <div class="gmail-text">Sign in</div>
+      </div>
+      
+      <h1 class="signin-header">to continue to Gmail</h1>
+      
+      <input type="email" id="emailInput" class="input-field" placeholder="Email or phone" autocomplete="username" autofocus>
+      <div id="emailError" class="error-message">Couldn't find your Google Account</div>
+      
+      <div class="email-info">
+        Not your computer? Use a Private Window to sign in.
+        <a class="forgot-email" onclick="showForgotEmail()">Forgot email?</a>
+      </div>
+      
+      <div class="guest-mode">
+        <a class="guest-mode-link" onclick="useGuestMode()">Use Guest mode instead</a>
+      </div>
+      
+      <div class="buttons-container">
+        <a class="create-account" onclick="createAccount()">Create account</a>
+        <button id="nextButton" class="next-button" onclick="nextStep()">Next</button>
+      </div>
+    </div>
+
+    <!-- Password step -->
+    <div id="passwordStep" class="password-step">
+      <div class="password-header">
+        <button class="back-button" onclick="goBack()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#1a73e8">
+            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+          </svg>
+        </button>
+        <div class="user-avatar" id="userAvatar">U</div>
+        <div class="user-email" id="userEmailDisplay"></div>
+      </div>
+      
+      <input type="password" id="passwordInput" class="input-field" placeholder="Enter your password" autocomplete="current-password">
+      <div id="passwordError" class="error-message">Wrong password. Try again or click Forgot password to reset it.</div>
+      
+      <div class="email-info">
+        <a class="forgot-email" onclick="showForgotPassword()">Forgot password?</a>
+      </div>
+      
+      <div class="buttons-container">
+        <a class="create-account" onclick="showMoreOptions()">More options</a>
+        <button id="signInButton" class="next-button" onclick="signIn()">
+          <span>Sign in</span>
+          <div class="spinner" id="signInSpinner"></div>
+        </button>
+      </div>
+      
+      <div class="language-selector">
+        <select id="languageSelect" onchange="changeLanguage(this.value)">
+          <option value="en" selected>English (United States)</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="lt">Lietuvių</option>
+        </select>
+      </div>
+    </div>
   </div>
 
+  <!-- Footer -->
   <div class="footer">
-    <span style="color:#1a73e8; font-size:14px; cursor:pointer;">Forgot email?</span>
-    <button onclick="mockLogin()">Next</button>
+    <div class="footer-content">
+      <div class="footer-left">
+        <a class="footer-link" onclick="showAbout()">About Google</a>
+        <a class="footer-link" onclick="showPrivacy()">Privacy</a>
+        <a class="footer-link" onclick="showTerms()">Terms</a>
+        <a class="footer-link" onclick="showHelp()">Help</a>
+      </div>
+      <div class="footer-right">
+        <select class="footer-link" style="border: none; background: transparent; color: #70757a; font-size: 12px; cursor: pointer;" onchange="changeLanguage(this.value)">
+          <option value="en">English (United States)</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+        </select>
+        <span class="footer-link">‎△⃒⃘</span>
+      </div>
+    </div>
   </div>
 
-  <div class="mock">
-    Mock / Demo page – no data is collected
-  </div>
-</div>
+  <script>
+    let currentEmail = '';
+    let loginAttempts = 0;
+    const MAX_ATTEMPTS = 5;
 
-<script>
-function mockLogin() {
-  window.location.href = "prank.html";
-}
-</script>
+    function validateEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email) || email.includes('@gmail.com');
+    }
 
+    function nextStep() {
+      const emailInput = document.getElementById('emailInput');
+      const emailError = document.getElementById('emailError');
+      const email = emailInput.value.trim();
+      
+      if (!email) {
+        emailError.textContent = "Enter an email or phone number";
+        emailError.style.display = 'block';
+        emailInput.classList.add('error');
+        return;
+      }
+      
+      if (!validateEmail(email) && !/^\d{10,}$/.test(email.replace(/\D/g, ''))) {
+        emailError.textContent = "Couldn't find your Google Account";
+        emailError.style.display = 'block';
+        emailInput.classList.add('error');
+        return;
+      }
+      
+      // Success - proceed to password step
+      currentEmail = email;
+      document.getElementById('userEmailDisplay').textContent = email;
+      document.getElementById('userAvatar').textContent = email.charAt(0).toUpperCase();
+      
+      document.getElementById('emailStep').style.display = 'none';
+      document.getElementById('passwordStep').style.display = 'block';
+      
+      setTimeout(() => {
+        document.getElementById('passwordInput').focus();
+      }, 100);
+    }
+
+    function signIn() {
+      const passwordInput = document.getElementById('passwordInput');
+      const passwordError = document.getElementById('passwordError');
+      const signInButton = document.getElementById('signInButton');
+      const spinner = document.getElementById('signInSpinner');
+      const password = passwordInput.value;
+      
+      if (!password) {
+        passwordError.textContent = "Enter a password";
+        passwordError.style.display = 'block';
+        passwordInput.classList.add('error');
+        return;
+      }
+      
+      // Show loading
+      signInButton.disabled = true;
+      spinner.style.display = 'block';
+      signInButton.querySelector('span').style.display = 'none';
+      
+      // Simulate authentication process
+      setTimeout(() => {
+        spinner.style.display = 'none';
+        signInButton.querySelector('span').style.display = 'inline';
+        
+        loginAttempts++;
+        
+        if (loginAttempts >= MAX_ATTEMPTS) {
+          // Too many attempts
+          passwordError.textContent = "Too many failed attempts. Try again later or reset your password.";
+          passwordError.style.display = 'block';
+          signInButton.disabled = true;
+          setTimeout(() => {
+            signInButton.disabled = false;
+          }, 30000); // 30 second lockout
+          return;
+        }
+        
+        if (password.length < 8) {
+          // Invalid password
+          passwordError.textContent = "Wrong password. Try again or click Forgot password to reset it.";
+          passwordError.style.display = 'block';
+          passwordInput.classList.add('error');
+          signInButton.disabled = false;
+          return;
+        }
+        
+        // Successful login simulation
+        alert(`Successfully signed in as ${currentEmail}\n\nThis is a simulation. In a real Google login, you would be redirected to Gmail.`);
+        
+        // Reset form for next use
+        resetForm();
+      }, 1500);
+    }
+
+    function goBack() {
+      document.getElementById('passwordStep').style.display = 'none';
+      document.getElementById('emailStep').style.display = 'block';
+      document.getElementById('emailInput').focus();
+    }
+
+    function resetForm() {
+      document.getElementById('emailInput').value = '';
+      document.getElementById('passwordInput').value = '';
+      document.getElementById('emailError').style.display = 'none';
+      document.getElementById('passwordError').style.display = 'none';
+      document.getElementById('emailInput').classList.remove('error');
+      document.getElementById('passwordInput').classList.remove('error');
+      document.getElementById('passwordStep').style.display = 'none';
+      document.getElementById('emailStep').style.display = 'block';
+      document.getElementById('signInButton').disabled = false;
+      document.getElementById('signInSpinner').style.display = 'none';
+      document.getElementById('signInButton').querySelector('span').style.display = 'inline';
+      loginAttempts = 0;
+      currentEmail = '';
+    }
+
+    function showForgotEmail() {
+      alert("To recover your email:\n\n1. Go to the account recovery page\n2. Enter your recovery phone number or email\n3. Follow the instructions sent to you");
+    }
+
+    function showForgotPassword() {
+      alert(`Password reset for ${currentEmail || 'your account'}:\n\n1. Go to accounts.google.com/signin/recovery\n2. Enter ${currentEmail || 'your email'}\n3. Follow the verification steps\n4. Create a new password`);
+    }
+
+    function createAccount() {
+      alert("Create a Google Account:\n\n1. Go to accounts.google.com/signup\n2. Enter your name and desired email\n3. Create a strong password\n4. Add recovery information\n5. Accept terms and conditions");
+    }
+
+    function useGuestMode() {
+      alert("Guest mode allows you to use this browser privately. Other people using this device won't see your activity, but your downloads and bookmarks will be saved.\n\nTo use Guest mode, click the profile icon in Chrome and select 'Open Guest window'.");
+    }
+
+    function showMoreOptions() {
+      alert("More options:\n\n• Sign in with a different account\n• Use security key\n• Use Google Authenticator\n• Get help signing in");
+    }
+
+    function showHelp() {
+      alert("Google Accounts Help:\n\nVisit support.google.com/accounts for help with signing in, security, and managing your account.");
+    }
+
+    function showPrivacy() {
+      alert("Privacy Policy:\n\nVisit policies.google.com/privacy to learn how Google collects and uses your data.");
+    }
+
+    function showTerms() {
+      alert("Terms of Service:\n\nVisit policies.google.com/terms to read Google's Terms of Service.");
+    }
+
+    function showAbout() {
+      alert("About Google:\n\nOur mission is to organize the world's information and make it universally accessible and useful.");
+    }
+
+    function changeLanguage(lang) {
+      const messages = {
+        en: { signIn: "Sign in", toGmail: "to continue to Gmail", emailPlaceholder: "Email or phone" },
+        es: { signIn: "Iniciar sesión", toGmail: "para ir a Gmail", emailPlaceholder: "Correo electrónico o teléfono" },
+        fr: { signIn: "Se connecter", toGmail: "pour accéder à Gmail", emailPlaceholder: "Adresse e-mail ou téléphone" },
+        de: { signIn: "Anmelden", toGmail: "um zu Gmail zu wechseln", emailPlaceholder: "E-Mail-Adresse oder Telefonnummer" },
+        lt: { signIn: "Prisijungti", toGmail: "kad tęstumėte naudojimąsi Gmail", emailPlaceholder: "El. paštas arba telefonas" }
+      };
+      
+      const msg = messages[lang] || messages.en;
+      document.querySelector('.gmail-text').textContent = msg.signIn;
+      document.querySelector('.sub-header').textContent = msg.toGmail;
+      document.getElementById('emailInput').placeholder = msg.emailPlaceholder;
+      
+      // Update footer language selector
+      const footerSelect = document.querySelector('.footer-right select');
+      if (footerSelect) {
+        footerSelect.value = lang;
+      }
+    }
+
+    // Event listeners for real-time validation
+    document.getElementById('emailInput').addEventListener('input', function() {
+      this.classList.remove('error');
+      document.getElementById('emailError').style.display = 'none';
+    });
+
+    document.getElementById('passwordInput').addEventListener('input', function() {
+      this.classList.remove('error');
+      document.getElementById('passwordError').style.display = 'none';
+    });
+
+    // Enter key support
+    document.getElementById('emailInput').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') nextStep();
+    });
+
+    document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') signIn();
+    });
+
+    // Auto-focus and select email input on page load
+    window.onload = function() {
+      document.getElementById('emailInput').focus();
+      document.getElementById('emailInput').select();
+    };
+  </script>
 </body>
 </html>
