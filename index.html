@@ -1,130 +1,84 @@
 <!DOCTYPE html>
 <html lang="lt">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🎄 Šventinė dovana</title>
+    <meta charset="UTF-8">
+    <title>Titai 😂</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #000000, #1a1a1a);
+            color: white;
+            font-family: Comic Sans MS, Arial, sans-serif;
+            text-align: center;
+            overflow-x: hidden;
+        }
 
-<style>
-body {
-    margin: 0;
-    min-height: 100vh;
-    background: linear-gradient(160deg, #0f2027, #000);
-    color: #00ff9c;
-    font-family: monospace;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        h1 {
+            font-size: 60px;
+            color: #ff0033;
+            text-shadow: 3px 3px 15px black;
+            animation: shake 0.5s infinite alternate;
+            margin-top: 30px;
+        }
 
-.container {
-    background: rgba(0,0,0,0.75);
-    border: 1px solid #00ff9c55;
-    border-radius: 14px;
-    padding: 24px;
-    max-width: 520px;
-    width: 90%;
-    text-align: center;
-}
+        @keyframes shake {
+            from { transform: rotate(-1deg); }
+            to { transform: rotate(1deg); }
+        }
 
-h1 {
-    margin-top: 0;
-}
+        .memes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
 
-button {
-    margin-top: 18px;
-    padding: 14px 22px;
-    font-size: 1em;
-    border-radius: 8px;
-    border: 1px solid #00ff9c;
-    background: transparent;
-    color: #00ff9c;
-}
+        .memes img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255,0,0,0.6);
+            transition: transform 0.3s;
+        }
 
-button:active {
-    background: #00ff9c;
-    color: #000;
-}
+        .memes img:hover {
+            transform: scale(1.1) rotate(3deg);
+        }
 
-.gifts {
-    display: none;
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-}
+        .footer {
+            font-size: 20px;
+            margin: 40px 0;
+            color: #00ffcc;
+        }
 
-.gift {
-    padding: 14px 0;
-    border: 1px solid #00ff9c;
-    border-radius: 8px;
-}
+        .blink {
+            animation: blink 1s infinite;
+        }
 
-.gift:active {
-    background: #00ff9c;
-    color: #000;
-}
-
-.result {
-    display: none;
-    margin-top: 20px;
-    font-size: 1.1em;
-}
-</style>
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
-    <h1>🎄 Linksmų Švenčių!</h1>
-    <p>Pasirink vieną iš 10 dovanų 🎁</p>
+    <h1>🔥 TITAI PAMIRŠK TĄ SENĄ BOBĄ 😄 🔥</h1>
 
-    <button id="openBtn">🎁 Atidaryti dovanas</button>
+    <p class="blink" style="font-size:25px;">Gyvenimas per trumpas dramoms 🤡</p>
 
-    <div class="gifts" id="gifts">
-        <div class="gift" data-id="1">🎁 1</div>
-        <div class="gift" data-id="2">🎁 2</div>
-        <div class="gift" data-id="3">🎁 3</div>
-        <div class="gift" data-id="4">🎁 4</div>
-        <div class="gift" data-id="5">🎁 5</div>
-        <div class="gift" data-id="6">🎁 6</div>
-        <div class="gift" data-id="7">🎁 7</div>
-        <div class="gift" data-id="8">🎁 8</div>
-        <div class="gift" data-id="9">🎁 9</div>
-        <div class="gift" data-id="10">🎁 10</div>
+    <div class="memes">
+        <img src="https://i.imgflip.com/4/1bij.jpg">
+        <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
+        <img src="https://i.imgflip.com/4/30b1gx.jpg">
+        <img src="https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif">
+        <img src="https://i.imgflip.com/4/2wifvo.jpg">
+        <img src="https://media.giphy.com/media/26n6WywJyh39n1pBu/giphy.gif">
+        <img src="https://i.imgflip.com/4/1otk96.jpg">
+        <img src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif">
     </div>
 
-    <div class="result" id="result"></div>
-</div>
-
-<script>
-const messages = {
-  1: "🚀 2026 bus tavo proveržio metai.",
-  2: "💻 Mažiau bugų, daugiau pergalių.",
-  3: "🔥 Drąsa keisti kryptį.",
-  4: "🧠 Ramus protas ir aiškios mintys.",
-  5: "💰 Stabilūs pinigai ir sprendimai.",
-  6: "⚡ Energija kiekvieną dieną.",
-  7: "🛡️ Apsauga ir stiprybė.",
-  8: "🌍 Nauji keliai ir patirtys.",
-  9: "🏆 Dideli tikslai – dideli rezultatai.",
-  10:"🎄 Sėkmė lydės visus metus."
-};
-
-document.getElementById("openBtn").addEventListener("click", () => {
-    document.getElementById("gifts").style.display = "grid";
-});
-
-document.querySelectorAll(".gift").forEach(gift => {
-    gift.addEventListener("click", () => {
-        const id = gift.getAttribute("data-id");
-        const r = document.getElementById("result");
-        r.innerText = messages[id];
-        r.style.display = "block";
-        document.getElementById("gifts").style.display = "none";
-    });
-});
-</script>
+    <div class="footer">
+        😎 Jei juokies – reiškia veikia <br>
+        💣 Siųsta su meile ir humoru
+    </div>
 
 </body>
 </html>
