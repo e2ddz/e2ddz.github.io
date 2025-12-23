@@ -37,9 +37,9 @@ body {
   font-size: 12px;
   font-weight: 500;
   color: #1a73e8;
-  text-decoration: none;
   margin-left: 16px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .header a:hover { text-decoration: underline; }
@@ -107,7 +107,6 @@ input:focus {
   color: #1a73e8;
   font-weight: 500;
   cursor: pointer;
-  text-decoration: none;
 }
 
 .link:hover { text-decoration: underline; }
@@ -179,9 +178,8 @@ button:hover { background: #1558b0; }
 <div class="header">
   <div class="google-logo"></div>
   <div>
+    <a onclick="go('email')">Sign in</a>
     <a onclick="go('help')">Help</a>
-    <a onclick="go('privacy')">Privacy</a>
-    <a onclick="go('terms')">Terms</a>
   </div>
 </div>
 
@@ -223,8 +221,24 @@ button:hover { background: #1558b0; }
   <div id="passwordError" class="error-text">Wrong password</div>
 
   <div class="buttons">
-    <span class="link">Forgot password?</span>
+    <span class="link" onclick="go('forgot')">Forgot password?</span>
     <button onclick="nextPassword()">Sign in</button>
+  </div>
+</div>
+
+<!-- FORGOT PASSWORD -->
+<div id="forgot" class="page">
+  <button class="back" onclick="go('password')">← Back</button>
+
+  <h1>Reset your password</h1>
+  <div class="sub">Confirm your account</div>
+
+  <input id="recoveryInput" placeholder="Email or phone">
+  <div id="recoveryError" class="error-text">Enter your account</div>
+
+  <div class="buttons">
+    <span class="link" onclick="go('email')">Cancel</span>
+    <button onclick="recover()">Continue</button>
   </div>
 </div>
 
@@ -232,15 +246,23 @@ button:hover { background: #1558b0; }
 <div id="success" class="page">
   <h1>Signed in</h1>
   <div class="sub">Welcome back</div>
+
   <p style="text-align:center;color:#5f6368">
-    Demo completed successfully.
+    Demo login flow completed successfully.
   </p>
+
+  <div class="buttons">
+    <span></span>
+    <button onclick="go('email')">Sign out</button>
+  </div>
 </div>
 
-<!-- STUB PAGES -->
-<div id="help" class="page"><h1>Help</h1></div>
-<div id="privacy" class="page"><h1>Privacy</h1></div>
-<div id="terms" class="page"><h1>Terms</h1></div>
+<!-- HELP -->
+<div id="help" class="page">
+  <h1>Help</h1>
+  <p class="info">This is a demo help page.</p>
+  <button onclick="go('email')">Back to sign in</button>
+</div>
 
 </div>
 
@@ -258,6 +280,7 @@ function hideErrors() {
 }
 
 function go(id) {
+  hideErrors();
   document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
   document.getElementById(id).classList.add("active");
 }
@@ -284,6 +307,16 @@ function nextPassword() {
     return;
   }
   go("success");
+}
+
+function recover() {
+  hideErrors();
+  if (!recoveryInput.value.trim()) {
+    recoveryError.style.display = "block";
+    recoveryInput.classList.add("error");
+    return;
+  }
+  go("email");
 }
 </script>
 
