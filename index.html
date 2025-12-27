@@ -2,23 +2,43 @@
 <html lang="lt">
 <head>
 <meta charset="UTF-8">
-<title>Zarasų Šaudymo Centras – Sveikinimas</title>
+<title>Šventiniai linkėjimai | Zarasų šaudymo centras</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 :root{
-  --gold:#f5c542;
-  --dark:#0e0e0e;
-  --gray:#bdbdbd;
+  --gold:#e6c35c;
+  --red:#b11226;
+  --dark:#0b0b0b;
+  --snow:#ffffff;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
 
 body{
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: radial-gradient(circle at top, #1b1b1b, #000);
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: radial-gradient(circle at top, #1a1a1a, #000);
   color:#fff;
   overflow-x:hidden;
+}
+
+/* SNOW */
+.snow{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  pointer-events:none;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, white 50%, transparent 51%),
+    radial-gradient(2px 2px at 70% 60%, white 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 40% 80%, white 50%, transparent 51%);
+  animation: snow 12s linear infinite;
+  opacity:.6;
+}
+
+@keyframes snow{
+  from{background-position:0 0}
+  to{background-position:0 100vh}
 }
 
 /* HERO */
@@ -30,134 +50,80 @@ body{
   align-items:center;
   text-align:center;
   padding:40px 20px;
+  position:relative;
 }
 
 .hero h1{
-  font-size:clamp(36px,6vw,72px);
+  font-size:clamp(36px,6vw,70px);
   color:var(--gold);
-  text-shadow:0 0 20px rgba(245,197,66,.6);
-  animation: glow 2s infinite alternate;
+  text-shadow:0 0 25px rgba(230,195,92,.7);
 }
 
-@keyframes glow{
-  from{ text-shadow:0 0 10px rgba(245,197,66,.4);}
-  to{ text-shadow:0 0 30px rgba(245,197,66,.9);}
+.hero h2{
+  margin-top:15px;
+  font-size:clamp(22px,4vw,36px);
+  color:#fff;
 }
 
 .hero p{
-  max-width:700px;
-  font-size:22px;
+  max-width:750px;
+  margin-top:25px;
+  font-size:20px;
   color:#ddd;
-  margin-top:20px;
+  line-height:1.6;
 }
 
 .badge{
-  margin-top:30px;
-  padding:10px 24px;
+  margin-top:35px;
+  padding:12px 28px;
   border:1px solid var(--gold);
-  border-radius:30px;
+  border-radius:40px;
   color:var(--gold);
   font-weight:600;
+  letter-spacing:.5px;
 }
 
-/* COUNTDOWN */
-.countdown{
-  margin-top:50px;
-  display:flex;
-  gap:25px;
-}
-
-.time-box{
-  background:#111;
-  padding:20px 26px;
-  border-radius:12px;
-  border:1px solid #333;
-  min-width:90px;
-}
-
-.time-box span{
-  font-size:36px;
-  font-weight:bold;
-  color:var(--gold);
-}
-
-/* SECTION */
+/* MESSAGE */
 .section{
-  padding:80px 20px;
-  max-width:1100px;
+  max-width:900px;
   margin:auto;
-}
-
-.section h2{
-  font-size:42px;
-  color:var(--gold);
-  margin-bottom:30px;
+  padding:80px 20px;
   text-align:center;
 }
 
-/* LEADERBOARD */
-.leaderboard{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:20px;
-}
-
-.card{
-  background:#111;
-  padding:20px;
-  border-radius:16px;
-  border:1px solid #222;
-  text-align:center;
-  transition:.3s;
-}
-
-.card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 0 25px rgba(245,197,66,.25);
-}
-
-.card h3{
+.section h3{
+  font-size:34px;
   color:var(--gold);
-  margin-bottom:10px;
+  margin-bottom:25px;
 }
 
-/* GALLERY */
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:20px;
-}
-
-.gallery img{
-  width:100%;
-  border-radius:14px;
-  transition:.3s;
-}
-
-.gallery img:hover{
-  transform:scale(1.05);
+.section p{
+  font-size:20px;
+  color:#ddd;
+  line-height:1.7;
 }
 
 /* CTA */
 .cta{
   background:linear-gradient(135deg,#1c1c1c,#000);
-  padding:60px 20px;
+  padding:70px 20px;
   text-align:center;
 }
 
 .cta button{
-  padding:16px 36px;
+  padding:18px 42px;
   font-size:22px;
   border:none;
-  border-radius:40px;
+  border-radius:50px;
   background:var(--gold);
   color:#000;
   cursor:pointer;
   font-weight:bold;
+  box-shadow:0 0 25px rgba(230,195,92,.4);
 }
 
 .cta button:hover{
-  background:#ffd966;
+  background:#ffe08a;
 }
 
 /* FOOTER */
@@ -173,60 +139,44 @@ body{
 
 <body>
 
+<div class="snow"></div>
+
 <!-- HERO -->
 <div class="hero">
-  <h1>🔥 Zarasų Šaudymo Centras 🔥</h1>
+  <h1>🎄 Su Šv. Kalėdomis! 🎄</h1>
+  <h2>ir artėjančiais Naujaisiais Metais 🎯</h2>
+
   <p>
-    Čia susitinka taiklumas, disciplina ir tikra bendruomenė.  
-    Sveikiname visą „Firearms“ komandą – jūs kuriate legendą!
+    Nuoširdžiausi šventiniai linkėjimai visai  
+    <strong>Zarasų šaudymo centro</strong> bendruomenei.
+    Tegul šventės atneša ramybę, o nauji metai – dar daugiau taiklių šūvių,
+    saugių treniruočių ir stiprios bendrystės.
   </p>
-  <div class="badge">🎯 Precision • Discipline • Community</div>
 
-  <!-- COUNTDOWN -->
-  <div class="countdown" id="countdown">
-    <div class="time-box"><span id="d">00</span><br>Dienos</div>
-    <div class="time-box"><span id="h">00</span><br>Val.</div>
-    <div class="time-box"><span id="m">00</span><br>Min.</div>
+  <div class="badge">
+    🎯 Taiklumas • Saugumas • Pagarba
   </div>
 </div>
 
-<!-- LEADERBOARD -->
+<!-- MESSAGE -->
 <div class="section">
-  <h2>🏆 Taiklumo Legenda</h2>
-  <div class="leaderboard">
-    <div class="card">
-      <h3>🥇 Instruktoriai</h3>
-      <p>Profesionalumas ir saugumas pirmoje vietoje</p>
-    </div>
-    <div class="card">
-      <h3>🥈 Bendruomenė</h3>
-      <p>Palaikymas, pagarba ir gera atmosfera</p>
-    </div>
-    <div class="card">
-      <h3>🥉 Taiklumas</h3>
-      <p>Kiekvienas šūvis – žingsnis į meistriškumą</p>
-    </div>
-  </div>
-</div>
-
-<!-- GALLERY -->
-<div class="section">
-  <h2>📸 Akimirkos iš centro</h2>
-  <div class="gallery">
-    <img src="https://images.unsplash.com/photo-1600053201354-7f8a4d2b3c02">
-    <img src="https://images.unsplash.com/photo-1586864387967-5a54f49d5a12">
-    <img src="https://images.unsplash.com/photo-1558981285-6f0c94958bb6">
-  </div>
+  <h3>🎆 Linkime Naujaisiais metais</h3>
+  <p>
+    ✔️ Tvirtos rankos ir aiškaus taikinio<br>
+    ✔️ Daug gerų akimirkų šaudykloje<br>
+    ✔️ Sveikatos, ramybės ir motyvacijos<br>
+    ✔️ Bendruomenės, kuria gera didžiuotis
+  </p>
 </div>
 
 <!-- CTA -->
 <div class="cta">
-  <h2>💥 Pasiruošęs kitam susitikimui?</h2>
-  <p style="margin:20px 0;color:#ddd">
-    Užtaikyk, susikoncentruok ir mėgaukis procesu.
+  <h3>Iki pasimatymo šaudykloje 💥</h3>
+  <p style="margin:20px 0;color:#ddd;font-size:18px">
+    Nauji metai – nauji tikslai. Taikyk tiksliai.
   </p>
-  <button onclick="alert('🎯 Taiklumas – tai disciplina. Iki pasimatymo šaudykloje!')">
-    🔫 Spausti jei pasiruošęs
+  <button onclick="alert('🎄 Linkime saugių, taiklių ir įkvepiančių Naujųjų metų!')">
+    🔫 Šventinis paspaudimas
   </button>
 </div>
 
@@ -234,26 +184,8 @@ body{
 <div class="footer">
   📍 Zarasai • Taikos g. 8A-35 <br>
   📞 +370 604 38766 • ✉️ zarasu.saudymo.centras@gmail.com <br><br>
-  Sukurta su pagarba Zarasų Šaudymo Centro bendruomenei
+  Su pagarba – Zarasų šaudymo centro bendruomenei
 </div>
-
-<script>
-// COUNTDOWN (nustatykite datą)
-const target = new Date();
-target.setDate(target.getDate() + 10);
-
-setInterval(()=>{
-  const now = new Date();
-  const diff = target - now;
-
-  document.getElementById("d").innerText =
-    Math.max(0, Math.floor(diff/1000/60/60/24));
-  document.getElementById("h").innerText =
-    Math.max(0, Math.floor(diff/1000/60/60)%24);
-  document.getElementById("m").innerText =
-    Math.max(0, Math.floor(diff/1000/60)%60);
-},1000);
-</script>
 
 </body>
 </html>
