@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bipoliniuklubas.lt – Coming Soon</title>
+  <title>Bipoliniuklubas.lt – Netrukus</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0f0e17;
+      --bg: #f5f3ff;
+      --primary: #c084fc;
+      --secondary: #f472b6;
+      --text: #4c1d95;
+      --light-text: #6b7280;
       --accent: #a78bfa;
-      --text: #e0e0ff;
-      --light-text: #c7c7ff;
     }
 
     * {
@@ -23,14 +25,13 @@
 
     body {
       min-height: 100vh;
-      background: var(--bg);
+      background: linear-gradient(135deg, var(--bg) 0%, #e0e7ff 100%);
       color: var(--text);
       font-family: 'Inter', system-ui, sans-serif;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      overflow-x: hidden;
     }
 
     .container {
@@ -40,83 +41,110 @@
 
     .logo {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(3.5rem, 10vw, 7rem);
+      font-size: clamp(4rem, 12vw, 8rem);
       font-weight: 700;
-      background: linear-gradient(90deg, var(--accent), #7c3aed, #d8b4fe);
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 0.3em;
-      letter-spacing: -2px;
-      animation: glow 4s ease-in-out infinite alternate;
+      margin-bottom: 0.2em;
+      letter-spacing: -3px;
+      animation: softGlow 6s ease-in-out infinite alternate;
     }
 
-    @keyframes glow {
-      from { text-shadow: 0 0 10px rgba(167,139,250,0.4); }
-      to   { text-shadow: 0 0 30px rgba(167,139,250,0.8), 0 0 60px rgba(167,139,250,0.4); }
+    @keyframes softGlow {
+      from { text-shadow: 0 0 15px rgba(192,132,252,0.3); }
+      to   { text-shadow: 0 0 35px rgba(244,114,182,0.5), 0 0 70px rgba(167,139,250,0.3); }
     }
 
     .subtitle {
-      font-size: clamp(1.3rem, 5vw, 2.2rem);
-      font-weight: 300;
+      font-size: clamp(1.4rem, 5vw, 2rem);
+      font-weight: 400;
       color: var(--light-text);
-      margin: 0.8em 0 1.5em;
-      opacity: 0.9;
+      margin: 0.5em 0 1.2em;
     }
 
     .coming-soon {
-      font-size: clamp(1.8rem, 6vw, 3.5rem);
+      font-size: clamp(2.2rem, 7vw, 4rem);
       font-weight: 600;
-      color: var(--accent);
-      margin: 1em 0;
-      letter-spacing: 3px;
-      text-transform: uppercase;
+      color: var(--primary);
+      margin: 1.5em 0 1em;
+      letter-spacing: 2px;
+    }
+
+    .icons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 2em 0;
+      font-size: 3.5rem;
+      opacity: 0.9;
+    }
+
+    .icons span {
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .icons span:nth-child(2) { animation-delay: 1s; }
+    .icons span:nth-child(3) { animation-delay: 2s; }
+    .icons span:nth-child(4) { animation-delay: 3s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
     }
 
     .description {
-      font-size: clamp(1.1rem, 3.5vw, 1.4rem);
-      max-width: 680px;
+      font-size: clamp(1.15rem, 4vw, 1.35rem);
+      max-width: 720px;
       margin: 0 auto 2.5em;
-      line-height: 1.7;
-      color: #d1d1ff;
+      line-height: 1.8;
+      color: var(--text);
     }
 
     .group-link {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      font-size: 1.3rem;
+      gap: 14px;
+      font-size: 1.4rem;
       font-weight: 500;
       color: white;
-      background: linear-gradient(135deg, #7c3aed, #a78bfa);
-      padding: 16px 36px;
-      border-radius: 50px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      padding: 18px 40px;
+      border-radius: 60px;
       text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 30px rgba(124,58,237,0.35);
+      transition: all 0.35s ease;
+      box-shadow: 0 12px 35px rgba(192,132,252,0.35);
       margin-top: 1.5em;
     }
 
     .group-link:hover {
-      transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 15px 40px rgba(124,58,237,0.5);
+      transform: translateY(-6px) scale(1.06);
+      box-shadow: 0 18px 50px rgba(192,132,252,0.5);
     }
 
     .group-link svg {
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
+    }
+
+    .redirect-info {
+      margin-top: 2em;
+      font-size: 1.1rem;
+      color: var(--light-text);
+      opacity: 0.8;
     }
 
     .footer {
       margin-top: 5rem;
       font-size: 0.95rem;
-      color: #a0a0ff;
+      color: var(--light-text);
       opacity: 0.7;
     }
 
     @media (max-width: 600px) {
       .container { padding: 30px 15px; }
-      .coming-soon { font-size: 2.2rem; }
-      .group-link { padding: 14px 28px; font-size: 1.15rem; }
+      .icons { gap: 20px; font-size: 2.8rem; }
+      .group-link { padding: 16px 32px; font-size: 1.25rem; }
     }
   </style>
 </head>
@@ -125,24 +153,43 @@
 <div class="container">
   <div class="logo">Bipoliniuklubas.lt</div>
   
-  <div class="subtitle">Bipolinio sutrikimo bendruomenė Lietuvoje</div>
+  <div class="subtitle">Bendraamžių erdvė bipolinio sutrikimo tema</div>
   
   <div class="coming-soon">Netrukus čia...</div>
   
+  <div class="icons">
+    <span>🌙</span>
+    <span>☀️</span>
+    <span>⚡</span>
+    <span>❤️</span>
+  </div>
+  
   <div class="description">
-    Saugi erdvė, kurioje dalinamės patirtimis, palaikome vieni kitus ir kalbame atvirai apie bipolinį sutrikimą – be filtrų, be gėdos, be tabu.
+    Saugi ir atvira bendruomenė, kurioje dalinamės patirtimis, palaikome vieni kitus ir kalbame apie bipolinį sutrikimą be filtrų ir be gėdos.
   </div>
 
-  <a href="https://www.facebook.com/groups/TavoGrupesPavadinimas" class="group-link" target="_blank">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.992 22 12z"/></svg>
-    Prisijunk prie Facebook grupės jau dabar
+  <a href="https://www.facebook.com/groups/350879518935160" class="group-link" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.992 22 12z"/>
+    </svg>
+    Prisijunk prie Facebook grupės dabar
   </a>
 
+  <div class="redirect-info">
+    Automatiškai nukreipsime į grupę po 8 sekundžių...
+  </div>
+
   <div class="footer">
-    Greitai turėsime pilnavertį puslapį su resursais, istorijomis, renginių kalendoriumi ir dar daugiau paramos. <br>
-    Iki greito! 🌙✨
+    Greitai turėsime pilnavertį puslapį su resursais, istorijomis ir renginių kalendoriumi. Iki greito! 🌙✨
   </div>
 </div>
+
+<script>
+// Automatinis redirect į FB grupę po 8 sekundžių
+setTimeout(() => {
+  window.location.href = "https://www.facebook.com/groups/350879518935160";
+}, 8000);
+</script>
 
 </body>
 </html>
