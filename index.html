@@ -1,103 +1,134 @@
 <!DOCTYPE html>
 <html lang="lt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bipolinių Klubas | Palaikymo bendruomenė</title>
 
-    <title>Bipolinių Klubas | Palaikymo bendruomenė</title>
+<!-- Redirect po 8 sekundžių -->
+<meta http-equiv="refresh" content="8; url=https://www.facebook.com/groups/350879518935160">
 
-    <!-- Redirect po 6 sekundžių -->
-    <meta http-equiv="refresh" content="6; url=https://www.facebook.com/groups/350879518935160">
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+    background: linear-gradient(-45deg, #4e73df, #6f42c1, #20c997, #5f9ea0);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
 
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(135deg, #0f0f14, #1c1c28);
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-        }
+/* Švelnus judantis fonas */
+@keyframes gradientMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
 
-        .container {
-            max-width: 900px;
-            padding: 40px;
-        }
+/* Nuotaikų bangos efektas */
+.wave {
+    position: absolute;
+    bottom: 0;
+    width: 200%;
+    height: 200px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 43%;
+    animation: waveMove 12s linear infinite;
+}
 
-        h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-        }
+.wave:nth-child(2) {
+    animation-duration: 18s;
+    opacity: 0.5;
+}
 
-        p {
-            font-size: 20px;
-            line-height: 1.6;
-            color: #cccccc;
-        }
+@keyframes waveMove {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
 
-        .btn {
-            margin-top: 30px;
-            padding: 15px 35px;
-            font-size: 18px;
-            background: #4a6cff;
-            border: none;
-            border-radius: 8px;
-            color: white;
-            text-decoration: none;
-            display: inline-block;
-            transition: 0.3s;
-        }
+.container {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 40px;
+}
 
-        .btn:hover {
-            background: #6f8dff;
-        }
+h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
 
-        .footer {
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-            text-align: center;
-            font-size: 14px;
-            color: #777;
-            letter-spacing: 2px;
-        }
+p {
+    font-size: 20px;
+    line-height: 1.6;
+    opacity: 0.95;
+}
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 32px;
-            }
+.btn {
+    margin-top: 30px;
+    padding: 15px 35px;
+    font-size: 18px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 12px;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+}
 
-            p {
-                font-size: 16px;
-            }
-        }
-    </style>
+.btn:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.footer {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    font-size: 14px;
+    letter-spacing: 3px;
+    opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 32px; }
+    p { font-size: 16px; }
+}
+</style>
 </head>
+
 <body>
 
-    <div class="container">
-        <h1>Bipolinių Klubas</h1>
-        <p>
-            Saugi ir palaikanti bendruomenė žmonėms, gyvenantiems su bipoliniu sutrikimu.
-            Čia dalinamės patirtimi, palaikymu ir supratimu.
-        </p>
+<div class="container">
+    <h1>Bipolinių Klubas</h1>
+    <p>
+        Saugi, palaikanti ir suprantanti bendruomenė žmonėms,
+        gyvenantiems su bipoliniu sutrikimu.
+        Dalinamės patirtimi, palaikymu ir stiprybe.
+    </p>
 
-        <a class="btn" href="https://www.facebook.com/groups/350879518935160">
-            Prisijungti prie Facebook grupės
-        </a>
+    <a class="btn" href="https://www.facebook.com/groups/350879518935160">
+        Prisijungti prie Facebook grupės
+    </a>
 
-        <p style="margin-top:20px; font-size:14px; color:#888;">
-            Būsite automatiškai nukreipti per kelias sekundes...
-        </p>
-    </div>
+    <p style="margin-top:20px; font-size:14px; opacity:0.7;">
+        Būsite automatiškai nukreipti per kelias sekundes...
+    </p>
+</div>
 
-    <div class="footer">
-        COMING SOON
-    </div>
+<div class="wave"></div>
+<div class="wave"></div>
+
+<div class="footer">
+    COMING SOON
+</div>
 
 </body>
 </html>
