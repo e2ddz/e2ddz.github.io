@@ -1,193 +1,103 @@
 <!DOCTYPE html>
 <html lang="lt">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bipoliniuklubas.lt – Netrukus</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-start: #f3e8ff;
-      --bg-end: #e0f2fe;
-      --text: #5b21b6;
-      --accent: #c084fc;
-      --secondary: #f472b6;
-      --light: #f3e8ff;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
-      color: var(--text);
-      font-family: 'Inter', system-ui, sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
-    }
+    <title>Bipolinių Klubas | Palaikymo bendruomenė</title>
 
-    .container {
-      max-width: 1000px;
-      padding: 40px 20px;
-      position: relative;
-      z-index: 2;
-    }
+    <!-- Redirect po 6 sekundžių -->
+    <meta http-equiv="refresh" content="6; url=https://www.facebook.com/groups/350879518935160">
 
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(5rem, 14vw, 10rem);
-      font-weight: 700;
-      background: linear-gradient(90deg, var(--accent), var(--secondary), #a78bfa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 0.2em;
-      letter-spacing: -4px;
-      animation: softPulse 8s ease-in-out infinite;
-    }
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #0f0f14, #1c1c28);
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
 
-    @keyframes softPulse {
-      0%, 100% { opacity: 0.9; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.03); }
-    }
+        .container {
+            max-width: 900px;
+            padding: 40px;
+        }
 
-    .wordcloud {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(0.9rem, 3vw, 1.6rem);
-      line-height: 1.8;
-      max-width: 800px;
-      margin: 1.5em auto;
-      color: var(--text);
-      opacity: 0.85;
-      font-weight: 300;
-    }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
 
-    .wordcloud span {
-      display: inline-block;
-      margin: 0 8px 12px;
-      animation: floatWords 12s ease-in-out infinite;
-    }
+        p {
+            font-size: 20px;
+            line-height: 1.6;
+            color: #cccccc;
+        }
 
-    .wordcloud span:nth-child(odd) { animation-delay: 2s; }
-    .wordcloud span:nth-child(3n) { animation-delay: 4s; }
-    .wordcloud span:nth-child(5n) { animation-delay: 6s; }
+        .btn {
+            margin-top: 30px;
+            padding: 15px 35px;
+            font-size: 18px;
+            background: #4a6cff;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.3s;
+        }
 
-    @keyframes floatWords {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-8px) rotate(2deg); }
-    }
+        .btn:hover {
+            background: #6f8dff;
+        }
 
-    .coming-soon {
-      font-size: clamp(2.5rem, 8vw, 5rem);
-      font-weight: 600;
-      color: var(--accent);
-      margin: 1.5em 0 1em;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+            letter-spacing: 2px;
+        }
 
-    .description {
-      font-size: clamp(1.2rem, 4vw, 1.5rem);
-      max-width: 720px;
-      margin: 0 auto 2.5em;
-      line-height: 1.7;
-      color: var(--text);
-      font-weight: 400;
-    }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
 
-    .group-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      font-size: 1.4rem;
-      font-weight: 500;
-      color: white;
-      background: linear-gradient(135deg, var(--accent), var(--secondary));
-      padding: 18px 42px;
-      border-radius: 60px;
-      text-decoration: none;
-      transition: all 0.35s ease;
-      box-shadow: 0 12px 35px rgba(192,132,252,0.3);
-      margin: 2em 0;
-    }
-
-    .group-link:hover {
-      transform: translateY(-6px) scale(1.05);
-      box-shadow: 0 18px 50px rgba(192,132,252,0.45);
-    }
-
-    .group-link svg {
-      width: 32px;
-      height: 32px;
-    }
-
-    .redirect-info {
-      font-size: 1.15rem;
-      color: var(--light-text);
-      opacity: 0.8;
-      margin-top: 1em;
-    }
-
-    .footer {
-      margin-top: 4rem;
-      font-size: 1rem;
-      color: var(--light-text);
-      opacity: 0.7;
-    }
-
-    @media (max-width: 600px) {
-      .container { padding: 30px 15px; }
-      .coming-soon { font-size: 3rem; }
-      .group-link { padding: 16px 32px; font-size: 1.25rem; }
-      .wordcloud { font-size: 1.1rem; }
-    }
-  </style>
+            p {
+                font-size: 16px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<div class="container">
-  <div class="logo">Bipoliniuklubas.lt</div>
+    <div class="container">
+        <h1>Bipolinių Klubas</h1>
+        <p>
+            Saugi ir palaikanti bendruomenė žmonėms, gyvenantiems su bipoliniu sutrikimu.
+            Čia dalinamės patirtimi, palaikymu ir supratimu.
+        </p>
 
-  <div class="wordcloud">
-    <span>bipolinis</span> <span>sutrikimas</span> <span>nuotaikos</span> <span>kaita</span> 
-    <span>manija</span> <span>depresija</span> <span>energija</span> <span>miegas</span> 
-    <span>emocijos</span> <span>palaikymas</span> <span>bendraamžiai</span> <span>saugi erdvė</span> 
-    <span>supratimas</span> <span>be gėdos</span> <span>terapija</span> <span>gyvenimas</span> 
-    <span>balansas</span> <span>stiprybė</span> <span>kartu</span> <span>mes</span>
-  </div>
+        <a class="btn" href="https://www.facebook.com/groups/350879518935160">
+            Prisijungti prie Facebook grupės
+        </a>
 
-  <div class="coming-soon">Netrukus čia...</div>
+        <p style="margin-top:20px; font-size:14px; color:#888;">
+            Būsite automatiškai nukreipti per kelias sekundes...
+        </p>
+    </div>
 
-  <div class="description">
-    Saugi, atvira ir šilta bendruomenė žmonėms, gyvenantiems su bipoliniu sutrikimu. 
-    Dalinamės patirtimis, palaikome vieni kitus ir kalbame atvirai – be tabu ir be filtrų.
-  </div>
-
-  <a href="https://www.facebook.com/groups/350879518935160" class="group-link" target="_blank">
-    <svg viewBox="0 0 24 24" fill="currentColor">
-      <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.992 22 12z"/>
-    </svg>
-    Prisijunk prie Facebook grupės dabar
-  </a>
-
-  <div class="redirect-info">
-    Automatiškai nukreipsime į grupę po 8 sekundžių...
-  </div>
-
-  <div class="footer">
-    Greitai atsiras pilnavertis puslapis su resursais, istorijomis ir renginių kalendoriumi. Iki greito! 🌙✨
-  </div>
-</div>
-
-<script>
-// Automatinis redirect į FB grupę po 8 sekundžių
-setTimeout(() => {
-  window.location.href = "https://www.facebook.com/groups/350879518935160";
-}, 8000);
-</script>
+    <div class="footer">
+        COMING SOON
+    </div>
 
 </body>
 </html>
