@@ -9,96 +9,93 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f5f3ff;
-      --primary: #c084fc;
+      --bg-start: #f3e8ff;
+      --bg-end: #e0f2fe;
+      --text: #5b21b6;
+      --accent: #c084fc;
       --secondary: #f472b6;
-      --text: #4c1d95;
-      --light-text: #6b7280;
-      --accent: #a78bfa;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      --light: #f3e8ff;
     }
 
     body {
+      margin: 0;
       min-height: 100vh;
-      background: linear-gradient(135deg, var(--bg) 0%, #e0e7ff 100%);
+      background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
       color: var(--text);
       font-family: 'Inter', system-ui, sans-serif;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
+      overflow: hidden;
     }
 
     .container {
-      max-width: 900px;
+      max-width: 1000px;
       padding: 40px 20px;
+      position: relative;
+      z-index: 2;
     }
 
     .logo {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(4rem, 12vw, 8rem);
+      font-size: clamp(5rem, 14vw, 10rem);
       font-weight: 700;
-      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+      background: linear-gradient(90deg, var(--accent), var(--secondary), #a78bfa);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 0.2em;
-      letter-spacing: -3px;
-      animation: softGlow 6s ease-in-out infinite alternate;
+      letter-spacing: -4px;
+      animation: softPulse 8s ease-in-out infinite;
     }
 
-    @keyframes softGlow {
-      from { text-shadow: 0 0 15px rgba(192,132,252,0.3); }
-      to   { text-shadow: 0 0 35px rgba(244,114,182,0.5), 0 0 70px rgba(167,139,250,0.3); }
+    @keyframes softPulse {
+      0%, 100% { opacity: 0.9; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.03); }
     }
 
-    .subtitle {
-      font-size: clamp(1.4rem, 5vw, 2rem);
-      font-weight: 400;
-      color: var(--light-text);
-      margin: 0.5em 0 1.2em;
+    .wordcloud {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(0.9rem, 3vw, 1.6rem);
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 1.5em auto;
+      color: var(--text);
+      opacity: 0.85;
+      font-weight: 300;
+    }
+
+    .wordcloud span {
+      display: inline-block;
+      margin: 0 8px 12px;
+      animation: floatWords 12s ease-in-out infinite;
+    }
+
+    .wordcloud span:nth-child(odd) { animation-delay: 2s; }
+    .wordcloud span:nth-child(3n) { animation-delay: 4s; }
+    .wordcloud span:nth-child(5n) { animation-delay: 6s; }
+
+    @keyframes floatWords {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(2deg); }
     }
 
     .coming-soon {
-      font-size: clamp(2.2rem, 7vw, 4rem);
+      font-size: clamp(2.5rem, 8vw, 5rem);
       font-weight: 600;
-      color: var(--primary);
+      color: var(--accent);
       margin: 1.5em 0 1em;
-      letter-spacing: 2px;
-    }
-
-    .icons {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin: 2em 0;
-      font-size: 3.5rem;
-      opacity: 0.9;
-    }
-
-    .icons span {
-      animation: float 5s ease-in-out infinite;
-    }
-
-    .icons span:nth-child(2) { animation-delay: 1s; }
-    .icons span:nth-child(3) { animation-delay: 2s; }
-    .icons span:nth-child(4) { animation-delay: 3s; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
+      letter-spacing: 3px;
+      text-transform: uppercase;
     }
 
     .description {
-      font-size: clamp(1.15rem, 4vw, 1.35rem);
+      font-size: clamp(1.2rem, 4vw, 1.5rem);
       max-width: 720px;
       margin: 0 auto 2.5em;
-      line-height: 1.8;
+      line-height: 1.7;
       color: var(--text);
+      font-weight: 400;
     }
 
     .group-link {
@@ -108,18 +105,18 @@
       font-size: 1.4rem;
       font-weight: 500;
       color: white;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      padding: 18px 40px;
+      background: linear-gradient(135deg, var(--accent), var(--secondary));
+      padding: 18px 42px;
       border-radius: 60px;
       text-decoration: none;
       transition: all 0.35s ease;
-      box-shadow: 0 12px 35px rgba(192,132,252,0.35);
-      margin-top: 1.5em;
+      box-shadow: 0 12px 35px rgba(192,132,252,0.3);
+      margin: 2em 0;
     }
 
     .group-link:hover {
-      transform: translateY(-6px) scale(1.06);
-      box-shadow: 0 18px 50px rgba(192,132,252,0.5);
+      transform: translateY(-6px) scale(1.05);
+      box-shadow: 0 18px 50px rgba(192,132,252,0.45);
     }
 
     .group-link svg {
@@ -128,23 +125,24 @@
     }
 
     .redirect-info {
-      margin-top: 2em;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       color: var(--light-text);
       opacity: 0.8;
+      margin-top: 1em;
     }
 
     .footer {
-      margin-top: 5rem;
-      font-size: 0.95rem;
+      margin-top: 4rem;
+      font-size: 1rem;
       color: var(--light-text);
       opacity: 0.7;
     }
 
     @media (max-width: 600px) {
       .container { padding: 30px 15px; }
-      .icons { gap: 20px; font-size: 2.8rem; }
+      .coming-soon { font-size: 3rem; }
       .group-link { padding: 16px 32px; font-size: 1.25rem; }
+      .wordcloud { font-size: 1.1rem; }
     }
   </style>
 </head>
@@ -152,20 +150,20 @@
 
 <div class="container">
   <div class="logo">Bipoliniuklubas.lt</div>
-  
-  <div class="subtitle">Bendraamžių erdvė bipolinio sutrikimo tema</div>
-  
-  <div class="coming-soon">Netrukus čia...</div>
-  
-  <div class="icons">
-    <span>🌙</span>
-    <span>☀️</span>
-    <span>⚡</span>
-    <span>❤️</span>
+
+  <div class="wordcloud">
+    <span>bipolinis</span> <span>sutrikimas</span> <span>nuotaikos</span> <span>kaita</span> 
+    <span>manija</span> <span>depresija</span> <span>energija</span> <span>miegas</span> 
+    <span>emocijos</span> <span>palaikymas</span> <span>bendraamžiai</span> <span>saugi erdvė</span> 
+    <span>supratimas</span> <span>be gėdos</span> <span>terapija</span> <span>gyvenimas</span> 
+    <span>balansas</span> <span>stiprybė</span> <span>kartu</span> <span>mes</span>
   </div>
-  
+
+  <div class="coming-soon">Netrukus čia...</div>
+
   <div class="description">
-    Saugi ir atvira bendruomenė, kurioje dalinamės patirtimis, palaikome vieni kitus ir kalbame apie bipolinį sutrikimą be filtrų ir be gėdos.
+    Saugi, atvira ir šilta bendruomenė žmonėms, gyvenantiems su bipoliniu sutrikimu. 
+    Dalinamės patirtimis, palaikome vieni kitus ir kalbame atvirai – be tabu ir be filtrų.
   </div>
 
   <a href="https://www.facebook.com/groups/350879518935160" class="group-link" target="_blank">
@@ -180,7 +178,7 @@
   </div>
 
   <div class="footer">
-    Greitai turėsime pilnavertį puslapį su resursais, istorijomis ir renginių kalendoriumi. Iki greito! 🌙✨
+    Greitai atsiras pilnavertis puslapis su resursais, istorijomis ir renginių kalendoriumi. Iki greito! 🌙✨
   </div>
 </div>
 
