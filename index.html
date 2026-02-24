@@ -5,58 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bipolinių Klubas | Palaikymo bendruomenė</title>
 
-<!-- Redirect po 8 sekundžių -->
-<meta http-equiv="refresh" content="8; url=https://www.facebook.com/groups/350879518935160">
+<meta name="description" content="Bipolinių Klubas – saugi palaikymo bendruomenė žmonėms, gyvenantiems su bipoliniu sutrikimu.">
 
 <style>
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    overflow: hidden;
-    background: linear-gradient(-45deg, #4e73df, #6f42c1, #20c997, #5f9ea0);
+    background: linear-gradient(-45deg, #2c3e50, #3f51b5, #6a11cb, #2575fc);
     background-size: 400% 400%;
-    animation: gradientMove 15s ease infinite;
+    animation: gradientMove 20s ease infinite;
     color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     text-align: center;
 }
 
-/* Švelnus judantis fonas */
 @keyframes gradientMove {
     0% {background-position: 0% 50%;}
     50% {background-position: 100% 50%;}
     100% {background-position: 0% 50%;}
 }
 
-/* Nuotaikų bangos efektas */
-.wave {
-    position: absolute;
-    bottom: 0;
-    width: 200%;
-    height: 200px;
-    background: rgba(255,255,255,0.08);
-    border-radius: 43%;
-    animation: waveMove 12s linear infinite;
-}
-
-.wave:nth-child(2) {
-    animation-duration: 18s;
-    opacity: 0.5;
-}
-
-@keyframes waveMove {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-}
-
-.container {
-    position: relative;
-    z-index: 2;
+section {
+    padding: 80px 20px;
     max-width: 900px;
-    padding: 40px;
+    margin: auto;
 }
 
 h1 {
@@ -64,20 +35,26 @@ h1 {
     margin-bottom: 20px;
 }
 
+h2 {
+    margin-top: 60px;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
 p {
     font-size: 20px;
-    line-height: 1.6;
+    line-height: 1.7;
     opacity: 0.95;
 }
 
 .btn {
     margin-top: 30px;
-    padding: 15px 35px;
+    padding: 16px 40px;
     font-size: 18px;
     background: rgba(255,255,255,0.15);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255,255,255,0.3);
-    border-radius: 12px;
+    border-radius: 14px;
     color: white;
     text-decoration: none;
     display: inline-block;
@@ -88,13 +65,39 @@ p {
     background: rgba(255,255,255,0.3);
 }
 
-.footer {
-    position: absolute;
-    bottom: 15px;
-    width: 100%;
+.wave {
+    position: fixed;
+    bottom: 0;
+    width: 200%;
+    height: 200px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 43%;
+    animation: waveMove 18s linear infinite;
+}
+
+.wave:nth-child(2) {
+    animation-duration: 28s;
+    opacity: 0.5;
+}
+
+@keyframes waveMove {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+.crisis {
+    margin-top: 60px;
+    padding: 25px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    font-size: 16px;
+}
+
+footer {
+    margin-top: 60px;
+    padding-bottom: 30px;
     font-size: 14px;
-    letter-spacing: 3px;
-    opacity: 0.7;
+    opacity: 0.6;
 }
 
 @media (max-width: 768px) {
@@ -106,29 +109,37 @@ p {
 
 <body>
 
-<div class="container">
+<section>
     <h1>Bipolinių Klubas</h1>
+
     <p>
-        Saugi, palaikanti ir suprantanti bendruomenė žmonėms,
-        gyvenantiems su bipoliniu sutrikimu.
-        Dalinamės patirtimi, palaikymu ir stiprybe.
+        Tu nesi vienas. Bipolinis sutrikimas nėra silpnumas.
+        Tai kelias, kuriame svarbiausia – palaikymas ir supratimas.
     </p>
 
     <a class="btn" href="https://www.facebook.com/groups/350879518935160">
-        Prisijungti prie Facebook grupės
+        Prisijungti prie Facebook bendruomenės
     </a>
 
-    <p style="margin-top:20px; font-size:14px; opacity:0.7;">
-        Būsite automatiškai nukreipti per kelias sekundes...
+    <h2>Kas mes?</h2>
+    <p>
+        Esame saugi, privati ir palaikanti bendruomenė žmonėms,
+        gyvenantiems su bipoliniu sutrikimu.
+        Dalinamės patirtimi, emociniu palaikymu ir informacija.
     </p>
-</div>
+
+    <div class="crisis">
+        Jei jaučiatės pavojingai ar kyla minčių apie savęs žalojimą –
+        kreipkitės pagalbos telefonu <strong>116 123</strong> (Vilties linija, LT).
+    </div>
+
+    <footer>
+        © 2026 Bipolinių Klubas | coming soon
+    </footer>
+</section>
 
 <div class="wave"></div>
 <div class="wave"></div>
-
-<div class="footer">
-    COMING SOON
-</div>
 
 </body>
 </html>
