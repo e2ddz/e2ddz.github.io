@@ -3,143 +3,178 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bipolinių Klubas | Palaikymo bendruomenė</title>
 
-<meta name="description" content="Bipolinių Klubas – saugi palaikymo bendruomenė žmonėms, gyvenantiems su bipoliniu sutrikimu.">
+<title>Bipolinių Klubas | Palaikymo bendruomenė</title>
+<meta name="description" content="Bipolinių Klubas – saugi palaikymo bendruomenė žmonėms, gyvenantiems su bipoliniu sutrikimu Lietuvoje.">
+<meta name="keywords" content="bipolinis sutrikimas, emocinė pagalba, palaikymo grupė, Lietuva">
+<meta name="author" content="Bipolinių Klubas">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bipolinių Klubas">
+<meta property="og:description" content="Saugi ir privati palaikymo bendruomenė žmonėms, gyvenantiems su bipoliniu sutrikimu.">
+<meta property="og:url" content="https://bipoliniuklubas.lt">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bipolinių Klubas">
+<meta name="twitter:description" content="Palaikymo bendruomenė Lietuvoje.">
 
 <style>
 body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(-45deg, #4e73df, #6f42c1, #20c997, #5f9ea0);
-    background-size: 400% 400%;
-    animation: gradientMove 15s ease infinite;
-    color: white;
-    text-align: center;
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background: linear-gradient(-45deg, #4e73df, #6f42c1, #20c997, #5f9ea0);
+background-size:400% 400%;
+animation: gradientMove 15s ease infinite;
+color:white;
 }
 
 @keyframes gradientMove {
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
 
-section {
-    padding: 80px 20px;
-    max-width: 900px;
-    margin: auto;
+.skip-link {
+position:absolute;
+top:-40px;
+left:10px;
+background:#000;
+color:#fff;
+padding:8px;
+z-index:100;
+}
+.skip-link:focus { top:10px; }
+
+.container {
+max-width:900px;
+margin:auto;
+padding:60px 20px;
+text-align:center;
 }
 
-h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
+button.lang {
+position:fixed;
+top:15px;
+right:20px;
+background:rgba(255,255,255,0.2);
+border:none;
+padding:8px 12px;
+border-radius:8px;
+color:white;
+cursor:pointer;
 }
 
-h2 {
-    margin-top: 60px;
-    font-weight: 400;
-    opacity: 0.9;
-}
-
-p {
-    font-size: 20px;
-    line-height: 1.7;
-    opacity: 0.95;
-}
+.section { margin-top:60px; }
 
 .btn {
-    margin-top: 30px;
-    padding: 16px 40px;
-    font-size: 18px;
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.3);
-    border-radius: 14px;
-    color: white;
-    text-decoration: none;
-    display: inline-block;
-    transition: 0.3s;
+margin-top:20px;
+padding:15px 35px;
+background:rgba(255,255,255,0.2);
+border-radius:12px;
+text-decoration:none;
+color:white;
+display:inline-block;
+transition:0.3s;
 }
 
 .btn:hover {
-    background: rgba(255,255,255,0.3);
-}
-
-.wave {
-    position: fixed;
-    bottom: 0;
-    width: 200%;
-    height: 200px;
-    background: rgba(255,255,255,0.08);
-    border-radius: 43%;
-    animation: waveMove 18s linear infinite;
-}
-
-.wave:nth-child(2) {
-    animation-duration: 28s;
-    opacity: 0.5;
-}
-
-@keyframes waveMove {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-}
-
-.crisis {
-    margin-top: 60px;
-    padding: 25px;
-    background: rgba(255,255,255,0.12);
-    border-radius: 12px;
-    font-size: 16px;
+background:rgba(255,255,255,0.35);
 }
 
 footer {
-    margin-top: 60px;
-    padding-bottom: 30px;
-    font-size: 14px;
-    opacity: 0.6;
+margin-top:60px;
+font-size:14px;
+opacity:0.7;
 }
 
-@media (max-width: 768px) {
-    h1 { font-size: 32px; }
-    p { font-size: 16px; }
+@media (max-width:768px){
+h1{font-size:28px;}
+p{font-size:16px;}
 }
 </style>
 </head>
 
 <body>
 
-<section>
-    <h1>Bipolinių Klubas</h1>
+<a href="#main" class="skip-link">Praleisti į turinį</a>
 
-    <p>
-        Tu nesi vienas. Bipolinis sutrikimas nėra silpnumas.
-        Tai kelias, kuriame svarbiausia – palaikymas ir supratimas.
-    </p>
+<button class="lang" onclick="toggleLang()" aria-label="Perjungti kalbą">
+LT / EN
+</button>
 
-    <a class="btn" href="https://www.facebook.com/groups/350879518935160">
-        Prisijungti prie Facebook bendruomenės
-    </a>
+<main id="main" class="container" role="main">
 
-    <h2>Kas mes?</h2>
-    <p>
-        Esame saugi, privati ir palaikanti bendruomenė žmonėms,
-        gyvenantiems su bipoliniu sutrikimu.
-        Dalinamės patirtimi, emociniu palaikymu ir informacija.
-    </p>
+<h1 data-lt="Bipolinių Klubas"
+    data-en="Bipolar Support Community">
+Bipolinių Klubas
+</h1>
 
-    <div class="crisis">
-        Jei jaučiatės pavojingai ar kyla minčių apie savęs žalojimą –
-        kreipkitės pagalbos telefonu <strong>116 123</strong> (Vilties linija, Lietuva).
-    </div>
+<p data-lt="Saugi ir privati palaikymo bendruomenė žmonėms, gyvenantiems su bipoliniu sutrikimu."
+   data-en="A safe and private support community for people living with bipolar disorder.">
+Saugi ir privati palaikymo bendruomenė žmonėms, gyvenantiems su bipoliniu sutrikimu.
+</p>
 
-    <footer>
-        © 2026 Bipolinių Klubas
-    </footer>
-</section>
+<a class="btn" href="https://www.facebook.com/groups/350879518935160" target="_blank" rel="noopener" aria-label="Prisijungti prie Facebook grupės">
+Prisijungti prie Facebook
+</a>
 
-<div class="wave"></div>
-<div class="wave"></div>
+<div class="section">
+<h2 data-lt="Kas mes esame"
+    data-en="About Us">
+Kas mes esame
+</h2>
+
+<p data-lt="Esame bendruomenė, kuri skatina emocinį saugumą, pagarbą ir konfidencialumą."
+   data-en="We are a community built on emotional safety, respect and confidentiality.">
+Esame bendruomenė, kuri skatina emocinį saugumą, pagarbą ir konfidencialumą.
+</p>
+</div>
+
+<div class="section">
+<h2 data-lt="Pagalbos resursai Lietuvoje"
+    data-en="Crisis Support in Lithuania">
+Pagalbos resursai Lietuvoje
+</h2>
+
+<p>
+116 123 – Vilties linija<br>
+8 800 28888 – Jaunimo linija<br>
+112 – Skubi pagalba
+</p>
+</div>
+
+<div class="section">
+<h2 data-lt="Privatumas ir duomenų saugumas"
+    data-en="Privacy & Data Protection">
+Privatumas ir duomenų saugumas
+</h2>
+
+<p data-lt="Ši svetainė nerenka jautrių asmens duomenų. Facebook grupė veikia pagal platformos privatumo taisykles."
+   data-en="This website does not collect sensitive personal data. The Facebook group operates under Facebook's privacy policy.">
+Ši svetainė nerenka jautrių asmens duomenų. Facebook grupė veikia pagal platformos privatumo taisykles.
+</p>
+</div>
+
+<footer>
+© 2026 Bipolinių Klubas
+</footer>
+
+</main>
+
+<script>
+let currentLang = "lt";
+
+function toggleLang(){
+currentLang = currentLang === "lt" ? "en" : "lt";
+document.documentElement.lang = currentLang;
+
+document.querySelectorAll("[data-lt]").forEach(el=>{
+el.textContent = el.dataset[currentLang];
+});
+}
+</script>
 
 </body>
 </html>
